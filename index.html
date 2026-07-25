@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title>Where the sovereign euro goes</title>
+<meta name="description" content="A sourced trace of who receives European public money for AI and compute infrastructure, and which definition of sovereignty it is measured against."/>
+<script>
+/* Set the pinned theme before first paint. Not deferred, not a module, on purpose. */
+{
+ try{
+  const t=localStorage.getItem('ledgerTheme');
+  if(t==='light'||t==='dark'){
+   document.documentElement.classList.add('pin-'+t);
+   document.querySelector('meta[name="color-scheme"]').content=t;
+  }
+ }catch(e){}
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+/* ---------- tokens: system preference by default, class pins override ---------- */
+:root{
+ color-scheme:light dark;
+ --ink:#1a1d22; --muted:#4b5563; --faint:#6b7280;
+ --card:#ffffff; --panel:rgba(255,253,244,.86); --board:rgba(255,255,250,.84);
+ --eu:#2f9e5f; --eu-bg:#e9f7ee;
+ --warn:#d98a1f; --warn-bg:#fcf2dd;
+ --bad:#c2412d; --bad-bg:#fbe7e2;
+ --blue:#1f6fc4; --violet:#7c5cc4;
+ --dim:#8b8f98; --dim-bg:#f1f1ef;
+ --edge:#1a1d22;
+ --shadow:0 14px 34px rgba(20,24,28,.13);
+ --hard:rgba(0,0,0,.11);
+ --bg1:#fffdf7; --bg2:#f6fbff; --bg3:#fff7ea; --dot:rgba(31,111,196,.09); --dot2:rgba(0,0,0,.045);
+}
+@media (prefers-color-scheme:dark){
+ :root:not(.pin-light){
+  --ink:#e9e7e0; --muted:#aab0ba; --faint:#9aa1ac;
+  --card:#23262e; --panel:rgba(32,35,42,.93); --board:rgba(32,35,42,.93);
+  --eu-bg:#1f2b24; --warn-bg:#2c2517; --bad-bg:#2e1d1a; --dim-bg:#242730;
+  --edge:#0c0d10;
+  --hard:rgba(0,0,0,.42);
+  --bg1:#15171c; --bg2:#191c23; --bg3:#1c1813; --dot:rgba(150,170,230,.08); --dot2:rgba(255,255,255,.03);
+ }
+}
+:root.pin-light{color-scheme:light}
+:root.pin-dark{
+ color-scheme:dark;
+ --ink:#e9e7e0; --muted:#aab0ba; --faint:#9aa1ac;
+ --card:#23262e; --panel:rgba(32,35,42,.93); --board:rgba(32,35,42,.93);
+ --eu-bg:#1f2b24; --warn-bg:#2c2517; --bad-bg:#2e1d1a; --dim-bg:#242730;
+ --edge:#0c0d10;
+ --hard:rgba(0,0,0,.42);
+ --bg1:#15171c; --bg2:#191c23; --bg3:#1c1813; --dot:rgba(150,170,230,.08); --dot2:rgba(255,255,255,.03);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+ color:var(--ink);
+ font-family:"Patrick Hand","Segoe Print","Comic Sans MS","Trebuchet MS",system-ui,sans-serif;
+ background:
+  radial-gradient(circle at 17px 21px, var(--dot) 0 1.2px, transparent 1.7px) 0 0/27px 27px,
+  radial-gradient(circle at 9px 13px, var(--dot2) 0 .8px, transparent 1.2px) 0 0/18px 18px,
+  linear-gradient(135deg,var(--bg1),var(--bg2) 60%,var(--bg3));
+ overflow-x:hidden;
+}
+.wrap{max-width:1400px;margin:0 auto;padding:22px 20px 56px}
+h1,h2,h3,h4,.hand{font-family:"Caveat","Segoe Print","Comic Sans MS",cursive}
+a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:20px 24px;background:var(--panel);border:3px solid var(--edge);border-radius:26px;box-shadow:var(--shadow);transform:rotate(-.2deg)}
+.hero::before,.hero::after{content:"";position:absolute;width:92px;height:26px;background:rgba(248,231,161,.7);top:-14px;border:1px dashed rgba(0,0,0,.18)}
+.hero::before{left:40px;transform:rotate(-7deg)}
+.hero::after{right:54px;transform:rotate(6deg)}
+h1{margin:0 0 4px;font-size:clamp(2rem,4.2vw,3.7rem);line-height:.94;letter-spacing:-.01em}
+.kicker{margin:0 0 8px;font-family:"Caveat",cursive;font-size:1.15rem;color:var(--violet)}
+.subtitle{max-width:1000px;font-size:1.05rem;color:var(--muted);line-height:1.5;margin:0}
+.crosslink{margin:10px 0 0;font-size:.92rem;color:var(--muted)}
+
+/* ---------- toolbar ---------- */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:18px 0 6px}
+.group{display:flex;flex-wrap:wrap;gap:7px;align-items:center;background:var(--panel);border:2px solid var(--edge);border-radius:18px;padding:7px 9px;box-shadow:4px 5px 0 var(--hard)}
+.group .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin-right:2px}
+button{font:inherit;appearance:none;border:2px solid var(--edge);border-radius:999px;padding:7px 13px;background:var(--card);color:var(--ink);cursor:pointer;transform:rotate(-.4deg);box-shadow:3px 4px 0 var(--hard);transition:transform .12s,background .12s,color .12s}
+button:nth-child(even){transform:rotate(.5deg)}
+button:hover{transform:translateY(-1px) rotate(0)}
+button[aria-pressed="true"],button.active{background:var(--blue);color:#fff;box-shadow:3px 4px 0 rgba(31,111,196,.25)}
+.chiprow{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:14px 0 4px}
+.chiprow button{font-size:.92rem;padding:6px 12px}
+.hint{font-size:.88rem;color:var(--muted);margin:10px 2px 14px;line-height:1.45;max-width:1000px}
+.hint b{color:var(--ink)}
+
+/* ---------- boards ---------- */
+.board{position:relative;padding:16px 18px;background:var(--board);border:4px solid var(--edge);border-radius:30px;box-shadow:16px 20px 0 rgba(20,24,28,.06),var(--shadow)}
+.panel[hidden]{display:none}
+.casehead{display:flex;flex-wrap:wrap;gap:10px;align-items:baseline;margin:0 0 6px}
+.casehead h2{margin:0;font-size:2rem;line-height:1}
+.casehead .meta{font-size:.86rem;color:var(--faint)}
+.headline{font-size:1.02rem;line-height:1.5;margin:2px 0 16px;max-width:1050px;color:var(--ink)}
+.tag{display:inline-block;font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding:2px 9px;border-radius:999px;border:2px solid currentColor}
+.tag.contracted{color:var(--eu)} .tag.pledged{color:var(--warn)} .tag.committed{color:var(--blue)}
+.tag.disbursed{color:var(--eu)} .tag.spent{color:var(--eu)}
+
+/* ---------- the rail ---------- */
+.railwrap{container-type:inline-size;container-name:rail;margin:6px 0 4px}
+.rail{display:flex;align-items:stretch;gap:0}
+.station{flex:1 1 0;min-inline-size:0;display:flex;flex-direction:column;gap:8px}
+.station > h4{margin:0 0 2px;font-size:1.12rem;letter-spacing:.01em;color:var(--faint);text-transform:uppercase;font-family:"Patrick Hand",sans-serif;font-size:.7rem;letter-spacing:.09em}
+.nodes{display:flex;flex-direction:column;gap:8px}
+.node{background:var(--card);border:2px solid var(--edge);border-left-width:6px;border-left-color:var(--dim);border-radius:14px;padding:9px 10px;box-shadow:3px 5px 0 var(--hard)}
+.node.eu{border-left-color:var(--eu);background:linear-gradient(180deg,var(--eu-bg),var(--card) 70%)}
+.node.non-eu{border-left-color:var(--bad);background:linear-gradient(180deg,var(--bad-bg),var(--card) 70%)}
+.node.mixed{border-left-color:var(--warn);background:linear-gradient(180deg,var(--warn-bg),var(--card) 70%)}
+.nhead{display:flex;gap:6px;align-items:baseline;justify-content:space-between}
+.ent{font-family:"Caveat",cursive;font-size:1.16rem;line-height:1.05}
+.jur{flex:0 0 auto;font-size:.62rem;font-weight:700;letter-spacing:.05em;padding:1px 6px;border-radius:999px;border:1.5px solid currentColor;color:var(--dim)}
+.jur.eu{color:var(--eu)} .jur.non-eu{color:var(--bad)} .jur.mixed{color:var(--warn)}
+.amt{margin-top:5px;font-size:.94rem;font-weight:700;letter-spacing:.01em}
+.amt .sub{display:block;font-weight:400;font-size:.72rem;color:var(--faint);letter-spacing:0;margin-top:1px}
+.amt.undisclosed{color:var(--dim);font-weight:400;font-style:italic;border-top:2px dashed var(--dim);padding-top:4px}
+.amt.zero{color:var(--bad);border-top:3px solid var(--bad);padding-top:4px}
+.amt.zero .sub{color:var(--bad);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:.66rem}
+.node .note{margin:6px 0 0;font-size:.76rem;line-height:1.34;color:var(--muted)}
+.node .src{display:inline-block;margin-top:5px;font-size:.72rem;text-decoration:none;font-weight:700}
+.node .src:hover{text-decoration:underline}
+.warn{display:inline-block;margin-top:5px;font-size:.7rem;color:var(--warn);border:1.5px dashed var(--warn);border-radius:8px;padding:1px 6px}
+
+.pipe{flex:0 0 86px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:4px;padding:52px 3px 0}
+.flowline{display:flex;align-items:center;inline-size:100%}
+.pipe .line{flex:1;block-size:4px;border-radius:2px;background:var(--eu)}
+.pipe .arw{color:var(--eu);font-size:.95rem;line-height:1;margin-inline-start:-1px}
+.pipe .plabel{font-size:.63rem;line-height:1.08;text-align:center;color:var(--dim);max-inline-size:80px}
+.pipe.dash .line{block-size:3px;border-radius:0;background:repeating-linear-gradient(90deg,var(--dim) 0 8px,transparent 8px 15px)}
+.pipe.dash .arw{color:var(--dim)}
+.pipe:not(.dash) .plabel{visibility:hidden}
+
+.station.profit .node{border-left-width:6px}
+.profitgrid{display:flex;flex-wrap:wrap;gap:6px}
+.pchip{font-family:"Caveat",cursive;font-size:1.15rem;padding:3px 11px;border-radius:999px;border:2px solid currentColor;color:var(--dim)}
+.pchip.eu{color:var(--eu);background:var(--eu-bg)}
+.pchip.non-eu{color:var(--bad);background:var(--bad-bg)}
+.pchip.mixed{color:var(--warn);background:var(--warn-bg)}
+.flipnote{margin-top:8px;font-size:.78rem;line-height:1.35;color:var(--muted)}
+
+/* ---------- boxes ---------- */
+.box{border-left:5px solid var(--blue);background:var(--dim-bg);padding:10px 12px;border-radius:0 14px 14px 0;margin-top:12px;font-size:.9rem;line-height:1.45}
+.box h3{margin:0 0 5px;font-size:1.25rem}
+.box.gap{border-left-color:var(--dim)}
+.box.law{border-left-color:var(--violet)}
+.box.alert{border-left-color:var(--bad)}
+.box ul{margin:6px 0 0;padding-inline-start:18px}
+.box li{margin:4px 0;line-height:1.38;font-size:.87rem}
+blockquote.clause{margin:8px 0 0;padding:10px 12px;border:2px dashed var(--edge);border-radius:12px;background:var(--card);font-size:.9rem;line-height:1.5}
+blockquote.clause b{background:rgba(248,231,161,.55);padding:0 2px}
+:root.pin-dark blockquote.clause b,
+:root:not(.pin-light) blockquote.clause b{background:rgba(248,231,161,.2)}
+@media (prefers-color-scheme:light){:root:not(.pin-dark) blockquote.clause b{background:rgba(248,231,161,.55)}}
+
+/* ---------- mode 2 ---------- */
+.testmeta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:2px 0 10px}
+.badge{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;padding:2px 9px;border-radius:999px;border:2px solid currentColor}
+.badge.notlaw{color:var(--bad)}
+.badge.law{color:var(--eu)}
+.badge.doc{color:var(--warn)}
+.variants{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 0}
+.vchip{font-size:.8rem;padding:5px 10px;border-radius:999px;border:2px solid var(--dim);color:var(--dim);background:var(--card);opacity:.55}
+.vchip.measured{border-color:var(--eu);color:var(--eu);background:var(--eu-bg);opacity:1;font-weight:700}
+.vchip.ignored{border-color:var(--bad);color:var(--bad);background:var(--bad-bg);opacity:1}
+.vchip.never{border-style:dashed;opacity:.75}
+.contras{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:11px;margin-top:10px}
+.contra{background:var(--card);border:2px solid var(--edge);border-left-width:6px;border-left-color:var(--dim);border-radius:14px;padding:11px 12px;box-shadow:3px 5px 0 var(--hard);transition:border-color .28s,background .28s}
+.contra.pass{border-left-color:var(--eu);background:linear-gradient(180deg,var(--eu-bg),var(--card) 70%)}
+.contra.fail{border-left-color:var(--bad);background:linear-gradient(180deg,var(--bad-bg),var(--card) 70%)}
+.contra .verdict{font-family:"Caveat",cursive;font-size:1.2rem}
+.contra.pass .verdict{color:var(--eu)}
+.contra.fail .verdict{color:var(--bad)}
+.contra.silent .verdict{color:var(--dim)}
+.contra p{margin:6px 0 0;font-size:.83rem;line-height:1.38;color:var(--muted)}
+.contra .arch{font-family:"Caveat",cursive;font-size:1.18rem;line-height:1.12;display:block;margin-bottom:3px}
+@keyframes flipPulse{0%{transform:scale(1)}35%{transform:scale(1.035)}100%{transform:scale(1)}}
+.contra.flipped{animation:flipPulse .55s ease}
+.scored{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px;margin-top:8px}
+.scard{background:var(--card);border:2px solid var(--edge);border-left-width:6px;border-radius:13px;padding:9px 11px;box-shadow:3px 4px 0 var(--hard);border-left-color:var(--dim)}
+.scard.pass{border-left-color:var(--eu)} .scard.fail{border-left-color:var(--bad)}
+.scard.conditional{border-left-color:var(--warn)} .scard.unassessed,.scard.na{border-left-color:var(--dim)}
+.scard b{font-family:"Caveat",cursive;font-size:1.14rem;font-weight:500}
+.scard .v{float:right;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--dim)}
+.scard.pass .v{color:var(--eu)} .scard.fail .v{color:var(--bad)} .scard.conditional .v{color:var(--warn)}
+.scard p{margin:5px 0 0;font-size:.78rem;line-height:1.34;color:var(--muted)}
+
+/* ---------- mode 3 ---------- */
+.bignum{font-family:"Caveat",cursive;font-size:clamp(3rem,9vw,6rem);line-height:.9;color:var(--dim);margin:0}
+.gapcase{margin-top:14px;padding-top:10px;border-top:2px dashed var(--dim)}
+.gapcase h3{margin:0 0 6px;font-size:1.4rem}
+.gaplist{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:8px}
+.gapitem{background:var(--card);border:2px dashed var(--dim);border-radius:13px;padding:8px 10px}
+.gapitem .ent{font-size:1.08rem}
+.gapitem .role{font-size:.64rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+.gapitem p{margin:4px 0 0;font-size:.76rem;line-height:1.32;color:var(--muted)}
+
+/* ---------- legend + footer ---------- */
+.legend{margin-top:18px;padding:16px 20px;border:3px solid var(--edge);border-radius:22px;background:var(--panel);box-shadow:8px 10px 0 rgba(0,0,0,.06)}
+.legend h2{margin:0 0 8px;font-size:1.45rem}
+.legend p{font-size:.92rem;line-height:1.5;margin:.45rem 0;color:var(--muted)}
+.legkey{display:flex;flex-wrap:wrap;gap:16px;margin-top:8px}
+.legkey span{display:inline-flex;align-items:center;gap:7px;font-size:.86rem;color:var(--muted)}
+.sw{width:26px;height:5px;border-radius:3px;background:var(--eu)}
+.sw.d{background:repeating-linear-gradient(90deg,var(--dim) 0 6px,transparent 6px 11px);height:3px}
+footer{margin-top:18px;font-size:.85rem;color:var(--faint);line-height:1.5;padding:0 4px}
+footer a{color:var(--blue)}
+
+@media (prefers-reduced-motion:reduce){
+ *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+/* ---------- narrow ---------- */
+@container rail (max-width:840px){
+ .rail{flex-direction:column}
+ .station{flex:0 0 auto}
+ .pipe{flex:0 0 auto;flex-direction:row;gap:9px;justify-content:flex-start;align-items:stretch;min-block-size:46px;padding:2px 0 2px 30px}
+ .flowline{flex-direction:column;inline-size:auto;block-size:auto;align-items:center}
+ .pipe .line{inline-size:4px;block-size:auto;flex:1}
+ .pipe.dash .line{inline-size:3px;block-size:auto;background:repeating-linear-gradient(180deg,var(--dim) 0 8px,transparent 8px 15px)}
+ .pipe .arw{transform:rotate(90deg);margin:-2px 0 0}
+ .pipe .plabel{text-align:start;max-inline-size:none;align-self:center}
+}
+@media (max-width:560px){
+ .wrap{padding:14px 12px 40px}
+ .board{padding:13px 12px;border-radius:22px;box-shadow:8px 10px 0 rgba(20,24,28,.05)}
+ .hero{padding:16px 15px}
+ .casehead h2{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+ <header class="hero">
+  <h1>Where the sovereign euro goes</h1>
+  <p class="kicker">Follow one euro of European public money. Watch which flag it is wearing when it lands.</p>
+  <p class="subtitle">Europe funds sovereignty and then buys the hardware from outside it. This traces ten named cases from funder to the jurisdiction where the profit books, and holds each one against the eight tests that claim to define what sovereign means. Where a figure is not public the pipe goes dashed and says so. That gap is the finding, not a rounding error.</p>
+  <p class="crosslink">Companion to <a href="https://rbalstad.github.io/eu-sovereign-stack-map/">Europe's sovereign full stack</a>, which maps where Europe holds. This one follows the money.</p>
+ </header>
+
+ <div class="toolbar">
+  <div class="group" id="modes" role="group" aria-label="View">
+   <span class="lbl">View</span>
+   <button data-mode="euro" aria-pressed="true">follow the euro &#9656;</button>
+   <button data-mode="definition" aria-pressed="false">which definition? &#9656;</button>
+   <button data-mode="gap" aria-pressed="false">the gap &#9656;</button>
+  </div>
+  <div class="group"><button id="themeBtn" title="Switch between light and dark">dark</button></div>
+ </div>
+
+ <p class="hint" id="hint"></p>
+
+ <section class="panel" id="panel-euro">
+  <div class="chiprow" id="casechips" role="group" aria-label="Pick a case"></div>
+  <div class="board" id="caseboard" aria-live="polite"></div>
+ </section>
+
+ <section class="panel" id="panel-definition" hidden>
+  <div class="chiprow" id="testchips" role="group" aria-label="Pick a sovereignty test"></div>
+  <div class="board" id="testboard" aria-live="polite"></div>
+ </section>
+
+ <section class="panel" id="panel-gap" hidden>
+  <div class="board" id="gapboard" aria-live="polite"></div>
+ </section>
+
+ <section class="legend">
+  <h2>How to read it</h2>
+  <div class="legkey">
+   <span><i class="sw"></i> disclosed amount, sourced</span>
+   <span><i class="sw d"></i> not disclosed, and never estimated</span>
+   <span><i class="sw" style="background:var(--bad)"></i> confirmed zero: sourced, no money flows</span>
+   <span><i class="sw" style="background:var(--bad)"></i> jurisdiction outside the EU</span>
+   <span><i class="sw" style="background:var(--warn)"></i> mixed or unresolved</span>
+  </div>
+  <p><b>Nothing here is estimated, modelled or derived.</b> If a number is not published it is recorded as not disclosed and drawn as a dashed pipe. A dashed pipe is not a zero and it is not a data-entry gap: it means the public record stops there.</p>
+  <p><b>A confirmed zero is the opposite of a gap.</b> Where a source positively establishes that no public money flows -- the Dutch cabinet declining the compute offtake, the Bundestag confirming no federal funds to AWS, three separate confirmations at Sines -- the amount is a sourced EUR 0, marked in red. Do not read it as a blank field.</p>
+  <p><b>Status words are not interchangeable.</b> Pledged is announced intent. Committed is budgeted. Contracted is signed or adopted. Disbursed is paid. Spent is spent. A twenty billion euro programme is not twenty billion euros awarded.</p>
+  <p><b>Jurisdiction means where the parent is incorporated and taxed</b>, not where the box was assembled or the building stands. Commission authorisation of national aid is not EU spending.</p>
+  <p><b>Test verdicts are this ledger's reading</b> of published criteria against public facts. They are not certifications, and where asserting a legal conclusion would overreach the verdict is recorded as unassessed rather than guessed.</p>
+ </section>
+
+ <footer>
+  <p>Data: <a href="data/flows.json">data/flows.json</a> &middot; sourcing rules in <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> &middot; code MIT, data CC BY 4.0. Snapshot <span id="snap"></span>. Corrections welcome by pull request with a primary source.</p>
+ </footer>
+</div>
+
+<script>
+const EU_MEMBERS=new Set(['AT','BE','BG','HR','CY','CZ','DK','EE','FI','FR','DE','GR','HU','IE','IT','LV','LT','LU','MT','NL','PL','PT','RO','SK','SI','ES','SE','EU']);
+const COUNTRY={US:'United States',EU:'European Union',DE:'Germany',FR:'France',ES:'Spain',NL:'Netherlands',LU:'Luxembourg',PT:'Portugal',IT:'Italy',CZ:'Czechia',TW:'Taiwan',JP:'Japan',NO:'Norway',GB:'United Kingdom',SG:'Singapore',SE:'Sweden',IE:'Ireland',PL:'Poland',AE:'United Arab Emirates',MIXED:'mixed'};
+const STATIONS=[['funder','Funder'],['instrument','Instrument'],['recipient','Recipient'],['supplier','Supplier']];
+const HINTS={
+ euro:'Pick a case. The chain runs left to right: who paid, through what instrument, to whom, buying from whom, and where the profit finally books. <b>Watch the flag change at the last two stations.</b>',
+ definition:'Pick a test. Each one claims to define sovereignty and they disagree with each other. The five archetypes below recolour as you switch. <b>Send an all-Nvidia estate from SEAL-4 to CADA level 4 and watch it go from failing to passing</b>, because CADA Annex II puts hardware outside the scope.',
+ gap:'Every place in the dataset where the public record stops. Not estimated, not modelled, not inferred. <b>Notice where the gaps cluster.</b>'
+};
+let DATA=null, mode='euro', activeCase=null, activeTest=null, prevVerdicts={};
+
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const jurClass=j=>!j?'':(j==='MIXED'?'mixed':(EU_MEMBERS.has(j)?'eu':'non-eu'));
+const countryName=c=>COUNTRY[c]||c;
+const fmtAmount=(n,cur)=>(cur?cur+' ':'')+new Intl.NumberFormat('en-GB').format(n);
+const humanise=s=>String(s||'').replace(/-/g,' ');
+
+/* ---------- theme ---------- */
+function currentlyDark(){
+ const r=document.documentElement;
+ if(r.classList.contains('pin-dark'))return true;
+ if(r.classList.contains('pin-light'))return false;
+ return matchMedia('(prefers-color-scheme: dark)').matches;
+}
+function paintThemeBtn(){ $('#themeBtn').textContent=currentlyDark()?'light':'dark'; }
+$('#themeBtn').addEventListener('click',()=>{
+ const goDark=!currentlyDark();
+ const r=document.documentElement;
+ r.classList.remove('pin-dark','pin-light');
+ r.classList.add(goDark?'pin-dark':'pin-light');
+ document.querySelector('meta[name="color-scheme"]').content=goDark?'dark':'light';
+ try{localStorage.setItem('ledgerTheme',goDark?'dark':'light')}catch(e){}
+ paintThemeBtn();
+});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',paintThemeBtn);
+
+/* ---------- mode 1: follow the euro ---------- */
+function nodeHTML(n){
+ const jc=jurClass(n.jurisdiction);
+ const sub=[n.share,n.status,n.date].filter(Boolean).map(esc).join(' &middot; ');
+ let amt;
+ if(n.disclosed===false||n.amount==null){
+  amt='<div class="amt undisclosed">not disclosed</div>';
+ }else if(n.amount===0){
+  /* A sourced zero is a finding, not a missing value. It must not read like an empty field. */
+  amt='<div class="amt zero">'+esc(fmtAmount(0,n.currency))+
+      '<span class="sub">confirmed zero'+(sub?' &middot; '+sub:'')+'</span></div>';
+ }else{
+  amt='<div class="amt">'+esc(fmtAmount(n.amount,n.currency))+'<span class="sub">'+sub+'</span></div>';
+ }
+ return '<article class="node '+jc+'">'+
+  '<div class="nhead"><span class="ent">'+esc(n.entity)+'</span>'+
+   (n.jurisdiction?'<span class="jur '+jc+'">'+esc(n.jurisdiction)+'</span>':'')+'</div>'+
+  (n.role_note?'<div class="role" style="font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin-top:2px">'+esc(n.role_note)+'</div>':'')+
+  amt+
+  (n.ownership?'<p class="note"><b>Ownership:</b> '+esc(n.ownership)+'</p>':'')+
+  (n.note?'<p class="note">'+esc(n.note)+'</p>':'')+
+  (n.caveat?'<span class="warn">&#9888; '+esc(humanise(n.caveat))+'</span>':'')+
+  (n.url?'<a class="src" href="'+esc(n.url)+'" target="_blank" rel="noopener">'+esc(n.src||'source')+' &#8599;</a>':'')+
+ '</article>';
+}
+function pipeHTML(dashed){
+ return '<div class="pipe'+(dashed?' dash':'')+'" aria-hidden="true">'+
+  '<span class="flowline"><span class="line"></span><span class="arw">&#9656;</span></span>'+
+  '<span class="plabel">not disclosed</span></div>';
+}
+function renderCase(id){
+ const c=DATA.CASES.find(x=>x.id===id); if(!c)return;
+ activeCase=id;
+ document.querySelectorAll('#casechips button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.case===id)));
+
+ const groups=STATIONS.map(([role,label])=>({role,label,nodes:c.chain.filter(n=>n.role===role)}))
+                      .filter(g=>g.nodes.length);
+ let rail='';
+ groups.forEach((g,i)=>{
+  if(i>0){
+   const allDark=g.nodes.every(n=>n.disclosed===false||n.amount==null);
+   rail+=pipeHTML(allDark);
+  }
+  rail+='<div class="station"><h4>'+esc(g.label)+'</h4><div class="nodes">'+g.nodes.map(nodeHTML).join('')+'</div></div>';
+ });
+ // final station: where the profit lands
+ const lands=c.profit_lands||[];
+ const anyOut=lands.some(x=>jurClass(x)==='non-eu');
+ rail+=pipeHTML(true);
+ rail+='<div class="station profit"><h4>Jurisdiction of profit</h4><div class="profitgrid">'+
+   lands.map(x=>'<span class="pchip '+jurClass(x)+'">'+esc(countryName(x))+'</span>').join('')+
+   '</div><p class="flipnote">'+(anyOut
+     ? 'The money was raised, appropriated and awarded inside the Union. It books outside it. <b>No EU instrument measures this.</b>'
+     : 'The profit books inside the Union on the evidence available.')+'</p></div>';
+
+ const aggregate=c.aggregate?
+  '<div class="box"><h3>The aggregate</h3><p>'+esc(fmtAmount(c.aggregate.non_eu_parented_total,c.aggregate.currency))+
+   ' of roughly '+esc(fmtAmount(c.aggregate.commission_cumulative_total,c.aggregate.currency))+
+   ' authorised, '+esc(c.aggregate.share)+', as of '+esc(c.aggregate.as_of)+'. '+
+   'Cancelled from approved aid: <b>'+esc(fmtAmount(c.aggregate.cancelled_from_approved_aid,c.aggregate.currency))+'</b>.'+
+   (c.aggregate.note?' '+esc(c.aggregate.note):'')+'</p></div>':'';
+
+ const lineItems=c.line_items?
+  '<div class="box law"><h3>Line items</h3><ul>'+c.line_items.map(li=>'<li><b>'+esc(li.project)+'</b> &middot; '+
+   esc(fmtAmount(li.amount,'EUR'))+' &middot; '+esc(li.date)+(li.case?' &middot; '+esc(li.case):'')+
+   ' &middot; parent '+esc(li.parent)+' ('+esc(li.parent_jurisdiction)+')'+
+   (li.status&&li.status!=='approved'?' &middot; <i>'+esc(li.status)+'</i>':'')+'</li>').join('')+'</ul></div>':'';
+
+ const neverApproved=c.never_approved?
+  '<div class="box alert"><h3>Pledged, never approved, never paid</h3><ul>'+c.never_approved.map(x=>'<li><b>'+esc(x.project)+
+   '</b> &middot; '+esc(fmtAmount(x.pledged,x.currency))+' pledged. '+esc(x.note)+'</li>').join('')+'</ul></div>':'';
+
+ const excluded=c.excluded?
+  '<div class="box gap"><h3>Deliberately excluded from the total</h3><ul>'+[].concat(c.excluded).map(x=>'<li><b>'+esc(x.project)+
+   '</b> &middot; '+esc(fmtAmount(x.amount,'EUR'))+(x.case?' &middot; '+esc(x.case):'')+'. '+esc(x.reason)+'</li>').join('')+'</ul></div>':'';
+
+ const related=c.related?
+  '<div class="box law"><h3>Related: '+esc(c.related.name)+'</h3><p>'+esc(c.related.note)+'</p>'+
+   (c.related.caveat?'<span class="warn">&#9888; '+esc(humanise(c.related.caveat))+'</span>':'')+'</div>':'';
+
+ const notPublic=(c.not_public&&c.not_public.length)?
+  '<div class="box gap"><h3>What is not public</h3><ul>'+c.not_public.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'';
+
+ const scored=Object.keys(c.tests||{});
+ const testsBox=scored.length?
+  '<div class="box"><h3>Held against the tests</h3><ul>'+scored.map(k=>{
+   const t=DATA.TESTS.find(x=>x.id===k);
+   const note=(c.test_notes&&c.test_notes[k])?' -- '+esc(c.test_notes[k]):'';
+   return '<li><b>'+esc(t?t.name:k)+':</b> '+esc(c.tests[k])+note+'</li>';
+  }).join('')+'</ul></div>':'';
+
+ $('#caseboard').innerHTML=
+  '<div class="casehead"><h2>'+esc(c.name)+'</h2>'+
+   '<span class="tag '+esc(c.status)+'">'+esc(c.status)+'</span>'+
+   '<span class="meta">'+esc(countryName(c.country))+' &middot; '+esc(c.year)+' &middot; confidence '+esc(c.confidence)+'</span></div>'+
+  '<p class="headline">'+esc(c.headline)+'</p>'+
+  '<div class="railwrap"><div class="rail">'+rail+'</div></div>'+
+  aggregate+lineItems+neverApproved+excluded+related+notPublic+testsBox;
+}
+
+/* ---------- mode 2: which definition ---------- */
+function renderTest(id){
+ const t=DATA.TESTS.find(x=>x.id===id); if(!t)return;
+ const previous=activeTest;
+ activeTest=id;
+ document.querySelectorAll('#testchips button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.test===id)));
+
+ const kindClass=/not law/i.test(t.legal_status||'')||/proposal/i.test(t.status||'')?'notlaw':
+                 /documentation|scoresheet|procurement/i.test(t.kind||'')?'doc':'law';
+
+ const variants=DATA.VARIANTS.map(v=>{
+  const never=(v.measured_by||[]).length===0;
+  const cls=never?'never':((v.measured_by||[]).includes(id)?'measured':((v.ignored_by||[]).includes(id)?'ignored':''));
+  const suffix=never?' &middot; no instrument measures this':
+               cls==='measured'?' &middot; measured':cls==='ignored'?' &middot; ignored':'';
+  return '<span class="vchip '+cls+'" title="'+esc(v.measures)+'">'+esc(v.name)+suffix+'</span>';
+ }).join('');
+
+ const contras=DATA.CONTRADICTIONS.map(k=>{
+  const isPass=(k.sovereign_under||[]).includes(id);
+  const isFail=(k.not_sovereign_under||[]).includes(id);
+  const cls=isPass?'pass':isFail?'fail':'silent';
+  const verdict=isPass?'Sovereign under this test':isFail?'Not sovereign under this test':'This test is silent on it';
+  const changed=previous&&prevVerdicts[k.id]&&prevVerdicts[k.id]!==cls;
+  prevVerdicts[k.id]=cls;
+  return '<div class="contra '+cls+(changed?' flipped':'')+'" data-k="'+esc(k.id)+'">'+
+   '<span class="arch">'+esc(k.case)+'</span>'+
+   '<span class="verdict">'+verdict+'</span>'+
+   '<p>'+esc(k.why)+'</p></div>';
+ }).join('');
+
+ const scoredCases=DATA.CASES.filter(c=>c.tests&&Object.prototype.hasOwnProperty.call(c.tests,id));
+ const scoredHTML=scoredCases.length?
+  '<div class="scored">'+scoredCases.map(c=>{
+   const v=c.tests[id];
+   const cls=['pass','fail','conditional','unassessed'].includes(v)?v:'na';
+   const note=(c.test_notes&&c.test_notes[id])?'<p>'+esc(c.test_notes[id])+'</p>':'';
+   return '<div class="scard '+cls+'"><span class="v">'+esc(v)+'</span><b>'+esc(c.name)+'</b>'+note+'</div>';
+  }).join('')+'</div>':
+  '<p style="font-size:.87rem;color:var(--muted);margin:6px 0 0">No case in this ledger has been read against this test. That is an absence of assessment, not a pass.</p>';
+
+ $('#testboard').innerHTML=
+  '<div class="casehead"><h2>'+esc(t.name)+'</h2>'+
+   '<span class="badge '+kindClass+'">'+esc(kindClass==='notlaw'?'not law':t.kind)+'</span></div>'+
+  '<div class="testmeta"><span class="meta" style="font-size:.85rem;color:var(--faint)">'+esc(t.legal_status)+'</span></div>'+
+  '<div class="box law"><h3>The clause that decides it</h3>'+
+   '<blockquote class="clause">'+esc(t.deciding_clause)+'</blockquote>'+
+   (t.url?'<a class="src" style="font-size:.78rem" href="'+esc(t.url)+'" target="_blank" rel="noopener">primary source &#8599;</a>':'')+
+   (t.caveat?'<div><span class="warn">&#9888; '+esc(humanise(t.caveat))+'</span></div>':'')+
+   '</div>'+
+  (t.detail?'<div class="box"><h3>What it actually requires</h3><p>'+esc(t.detail)+'</p></div>':'')+
+  '<div class="box gap"><h3>What this test measures</h3><div class="variants">'+variants+'</div></div>'+
+  '<h3 style="margin:18px 0 2px;font-size:1.5rem">The five archetypes</h3>'+
+  '<p style="font-size:.87rem;color:var(--muted);margin:0 0 4px">Switch tests and watch these recolour. The disagreements are the point.</p>'+
+  '<div class="contras">'+contras+'</div>'+
+  '<h3 style="margin:18px 0 2px;font-size:1.5rem">Cases read against this test</h3>'+
+  scoredHTML;
+}
+
+/* ---------- mode 3: the gap ---------- */
+function renderGap(){
+ let total=0;
+ const blocks=DATA.CASES.map(c=>{
+  const dark=c.chain.filter(n=>n.disclosed===false||n.amount==null);
+  if(!dark.length)return '';
+  total+=dark.length;
+  return '<div class="gapcase"><h3>'+esc(c.name)+'</h3><div class="gaplist">'+
+   dark.map(n=>'<div class="gapitem"><span class="role">'+esc(n.role)+'</span><br>'+
+    '<span class="ent">'+esc(n.entity)+'</span>'+
+    (n.jurisdiction?' <span class="jur '+jurClass(n.jurisdiction)+'">'+esc(n.jurisdiction)+'</span>':'')+
+    (n.note?'<p>'+esc(n.note)+'</p>':'')+'</div>').join('')+
+   '</div>'+
+   ((c.not_public&&c.not_public.length)?'<p style="font-size:.8rem;color:var(--muted);margin:7px 0 0"><b>Also not public:</b> '+c.not_public.map(esc).join(' ')+'</p>':'')+
+   '</div>';
+ }).join('');
+ $('#gapboard').innerHTML=
+  '<p class="bignum">'+total+'</p>'+
+  '<p class="headline" style="margin-top:-4px">places in this ledger where the public record stops. Every one of them is a published chain that simply does not say how much. '+
+  '<b>JUPITER, MeluXina-AI and Mistral Compute all go dark at the same station: the line item that would show what Nvidia was paid.</b></p>'+
+  blocks;
+}
+
+/* ---------- chrome ---------- */
+function setMode(m,{push=true}={}){
+ mode=m;
+ document.querySelectorAll('#modes button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===m)));
+ $('#panel-euro').hidden=m!=='euro';
+ $('#panel-definition').hidden=m!=='definition';
+ $('#panel-gap').hidden=m!=='gap';
+ $('#hint').innerHTML=HINTS[m];
+ if(m==='gap')renderGap();
+ if(m==='definition'&&!activeTest)renderTest(DATA.TESTS[0].id);
+ if(m==='euro'&&!activeCase)renderCase(DATA.CASES[0].id);
+ if(push)writeHash();
+}
+function writeHash(){
+ const h=mode==='gap'?'#gap':mode==='definition'?('#test-'+activeTest):('#case-'+activeCase);
+ if(location.hash!==h)history.replaceState(null,'',h);
+}
+function applyHash(){
+ const h=location.hash||'';
+ let m=null;
+ if(/^#gap\b/.test(h))m='gap';
+ else{
+  const tm=h.match(/^#test-([a-z0-9-]+)/i);
+  const cm=h.match(/^#case-([a-z0-9-]+)/i);
+  if(tm&&DATA.TESTS.some(t=>t.id===tm[1])){activeTest=tm[1];m='definition';}
+  else if(cm&&DATA.CASES.some(c=>c.id===cm[1])){activeCase=cm[1];m='euro';}
+ }
+ if(!m)m='euro';
+ if(m==='definition')renderTest(activeTest);
+ if(m==='euro')renderCase(activeCase||DATA.CASES[0].id);
+ setMode(m,{push:false});
+}
+$('#modes').addEventListener('click',e=>{
+ const b=e.target.closest('button'); if(!b)return;
+ setMode(b.dataset.mode);
+});
+addEventListener('hashchange',applyHash);
+
+/* ---------- boot ---------- */
+fetch('data/flows.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{
+ DATA=d;
+ $('#snap').textContent=d._meta&&d._meta.snapshot?d._meta.snapshot:'';
+ $('#casechips').innerHTML=d.CASES.map(c=>'<button data-case="'+esc(c.id)+'" aria-pressed="false">'+esc(c.name)+'</button>').join('');
+ $('#testchips').innerHTML=d.TESTS.map(t=>'<button data-test="'+esc(t.id)+'" aria-pressed="false">'+esc(t.name)+'</button>').join('');
+ $('#casechips').addEventListener('click',e=>{const b=e.target.closest('button');if(b){renderCase(b.dataset.case);writeHash();}});
+ $('#testchips').addEventListener('click',e=>{const b=e.target.closest('button');if(b){renderTest(b.dataset.test);writeHash();}});
+ paintThemeBtn();
+ applyHash();
+}).catch(e=>{
+ $('#caseboard').innerHTML='<p style="padding:20px;line-height:1.5">Could not load <code>data/flows.json</code> ('+esc(e.message)+
+  '). Browsers block <code>file://</code> data loads, so open the live URL, or run a local server in the repo folder: '+
+  '<code>python -m http.server</code> then visit <code>http://localhost:8000/</code>.</p>';
+});
+</script>
+</body>
+</html>

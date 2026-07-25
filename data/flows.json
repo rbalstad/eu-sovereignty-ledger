@@ -1,0 +1,432 @@
+{
+  "_meta": {
+    "title": "Where the sovereign euro goes",
+    "snapshot": "2026-07",
+    "note": "An opinionated, sourced trace of who receives European public money for AI and compute infrastructure, and which definition of sovereignty it is measured against. Amounts are as published. Where a figure is not public it is null with disclosed:false and must render as an undisclosed pipe, never as zero. Nothing here is estimated, modelled or derived. Test verdicts are this map's reading of published criteria against public facts, not certifications.",
+    "status_vocabulary": {
+      "pledged": "announced intent, no contract",
+      "committed": "budgeted or board-approved, not yet contracted",
+      "contracted": "signed contract or adopted aid decision",
+      "disbursed": "money confirmed paid",
+      "spent": "money confirmed spent",
+      "none": "a source positively establishes that no money flows; amount is a confirmed zero, not an undisclosed one",
+      "declined": "the funder was asked and refused, or let the route lapse; amount is a confirmed zero",
+      "not applicable": "no award was possible, so there is nothing to disclose; amount is a confirmed zero"
+    },
+    "seeded_by": "Cowork research pass 2026-07-25; see RESEARCH-Sovereignty-Definitions-and-Money-Flows_2026-07-25.md for the full sourcing"
+  },
+
+  "VARIANTS": [
+    { "id": "data", "name": "Data sovereignty", "measures": "Where the data physically sits", "measured_by": ["cada4", "cada3", "seal4", "seal3", "secnumcloud", "gaiax3"], "ignored_by": ["c5", "chips2-domestic"] },
+    { "id": "operational", "name": "Operational sovereignty", "measures": "Who administers it, from where, and who holds the keys", "measured_by": ["cada4", "cada3", "seal4", "seal3", "secnumcloud", "gaiax3"], "ignored_by": ["c5", "chips2-domestic"] },
+    { "id": "technological", "name": "Technological sovereignty", "measures": "Who owns the IP and whether you could fork it", "measured_by": ["cada4", "seal4", "chips2-domestic"], "ignored_by": ["secnumcloud", "gaiax3", "c5"], "note": "CADA's effective-control test at Annex II 4.1(i)(ii) is defined over SOFTWARE components only." },
+    { "id": "jurisdictional", "name": "Jurisdictional sovereignty", "measures": "Whose courts and subpoenas reach it", "measured_by": ["cada4", "cada3", "seal4", "seal3", "secnumcloud", "gaiax3"], "ignored_by": ["c5", "chips2-domestic"] },
+    { "id": "supply_chain", "name": "Supply-chain sovereignty", "measures": "Where the silicon comes from", "measured_by": ["seal4", "seal3"], "ignored_by": ["cada4", "cada3", "secnumcloud", "gaiax3", "c5"], "note": "SEAL category SOV-5, weighted 20%, is the only place in any EU instrument where hardware provenance carries weight -- and SEAL is procurement documentation, not law. CADA Annex II excludes hardware expressly." },
+    { "id": "economic", "name": "Economic sovereignty", "measures": "Where the profit lands", "measured_by": [], "ignored_by": ["cada4", "cada3", "seal4", "seal3", "secnumcloud", "gaiax3", "c5", "chips2-domestic"], "note": "No instrument measures this. IPCEI Communication 2021/C 528/02 point 10(c)(i) makes nationality-of-beneficiary conditions a non-severable violation of Union law. Economic sovereignty is not merely unmeasured, it is legally disfavoured.", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52021XC1230(02)" }
+  ],
+
+  "TESTS": [
+    {
+      "id": "cada4", "name": "CADA Union assurance level 4", "kind": "proposed EU law", "status": "proposal only",
+      "legal_status": "COM(2026) 502 final, procedure 2026/0138(COD), first-reading start. No EP rapporteur in the official file, no Council position, no trilogue as of 2026-07-25. NOT LAW.",
+      "measures": ["data", "operational", "jurisdictional", "technological"],
+      "ignores": ["supply_chain", "economic"],
+      "deciding_clause": "Annex II chapeau: \"For the purpose of the criteria under Union assurance levels 1, 2, 3, and 4, 'software' within the meaning of Regulation (EU) 2024/2847, Article 3, point (4) falls within the scope of this Annex and Annex III to this Regulation. 'Hardware' within the meaning of Regulation (EU) 2024/2847, Article 3, point (5) is outside of the scope.\"",
+      "detail": "Eleven cumulative criteria at point 4.1, (a) to (k): Union establishment; location of infrastructure, assets and personnel; sensitive customer data, metadata and telemetry remaining exclusively within the Union at any time; personnel who are Union citizens; a European cybersecurity certificate at assurance level high; no use of service-generated data to train third-country AI; not subject to the control of a third country; support performed exclusively within the Union by Union residents; software supply-chain measures including SBOM and effective control over software components; open-source remote-feature controls; separation from any third-country subsidiary. Point 4.1(g) has NO derogation clause, unlike 3.1(g). Commission estimate: roughly 1% of contracts, mainly defence.",
+      "url": "https://data.consilium.europa.eu/doc/document/ST-10104-2026-ADD-1/en/pdf"
+    },
+    {
+      "id": "cada3", "name": "CADA Union assurance level 3", "kind": "proposed EU law", "status": "proposal only",
+      "legal_status": "As cada4. NOT LAW.",
+      "measures": ["data", "operational", "jurisdictional"],
+      "ignores": ["supply_chain", "economic"],
+      "deciding_clause": "Annex II point 3.1(g) carries a derogation: a third-country-controlled provider \"may be audited for Union assurance level 3 where the Commission has adopted an implementing act under Article 19\".",
+      "detail": "This is the adequacy-style gate a US hyperscaler subsidiary can pass by Commission decision. Level 4 is closed to third-country control; level 3 is not. Point 4.1(g) states the no-third-country-control criterion with no derogation attached, and the derogation text appears only at level 3, naming Article 19 as the implementing-act route. Commission estimate: under 10% of contracts.",
+      "url": "https://data.consilium.europa.eu/doc/document/ST-10104-2026-ADD-1/en/pdf"
+    },
+    {
+      "id": "seal4", "name": "SEAL-4 (Cloud Sovereignty Framework)", "kind": "EU procurement scheme", "status": "in use, not law",
+      "legal_status": "Procurement documentation used as an award criterion, v1.2.1 October 2025. Applied in the Cloud III tender awarded 2026-04-17. No contract has ever been awarded at SEAL-4.",
+      "measures": ["data", "operational", "jurisdictional", "technological", "supply_chain"],
+      "ignores": ["economic"],
+      "deciding_clause": "SEAL-4: \"Technology and operations under complete EU control, subject only to EU law, with no critical non-EU dependencies.\"",
+      "detail": "Eight weighted categories: Strategic 15%, Legal and Jurisdictional 10%, Data and AI 10%, Operational 15%, Supply Chain 20%, Technology 15%, Security 10%, Sustainability 5%. The Supply Chain weighting is the only place hardware provenance is scored anywhere in the EU toolkit. Detailed criteria are withheld under procurement rules (EP question P-004293/2025); the frequently-quoted figure of 48 criteria is Commission-asserted only.",
+      "url": "https://commission.europa.eu/document/download/09579818-64a6-4dd5-9577-446ab6219113_en"
+    },
+    {
+      "id": "seal3", "name": "SEAL-3 (Cloud Sovereignty Framework)", "kind": "EU procurement scheme", "status": "in use, not law",
+      "legal_status": "Highest level actually awarded. April 2026: EUR 180M over six years, four contracts. SEAL-3 to a partnership led by Post Telecom (with OVHcloud and CleverCloud), to STACKIT and to Scaleway; SEAL-2 to Proximus (with S3NS, Clarence, Mistral).",
+      "measures": ["data", "operational", "jurisdictional", "supply_chain"],
+      "ignores": ["economic"],
+      "deciding_clause": "",
+      "url": "https://commission.europa.eu/news-and-media/news/commission-advances-cloud-sovereignty-through-strategic-procurement-2026-04-17_en"
+    },
+    {
+      "id": "secnumcloud", "name": "SecNumCloud 3.2 (France, ANSSI)", "kind": "national qualification", "status": "in force",
+      "legal_status": "v3.2 dated 8 March 2022, current. A March 2026 decree forces sensitive central-administration data onto it.",
+      "measures": ["data", "operational", "jurisdictional"],
+      "ignores": ["supply_chain", "economic", "technological"],
+      "deciding_clause": "Chapter 19.6, \"Immunite au droit extracommunautaire\". ANSSI requires an EU-registered seat and that non-EU entities \"restent minoritaires\".",
+      "detail": "The 24% individual and 39% collective non-EU capital caps are verified only in consultation draft 3.2.a, not in the final document. Treat as reported.",
+      "caveat": "unverified-caps",
+      "url": "https://cyber.gouv.fr/enjeux-technologiques/cloud/faq-qualification-secnumcloud/"
+    },
+    {
+      "id": "gaiax3", "name": "Gaia-X Label Level 3", "kind": "industry label", "status": "in use, low uptake",
+      "legal_status": "Gaia-X's own April 2026 release reports 14 services at Label Level 3 against 600+ catalogued.",
+      "measures": ["data", "operational", "jurisdictional"],
+      "ignores": ["supply_chain", "economic", "technological"],
+      "deciding_clause": "P5.1.5 bars non-EU/EEA-headquartered shareholders from holding \"control\", defined as \"decisive influence... de jure or de facto\". P5.1.4 requires registered head office, headquarters and main establishment in the EU/EEA. A control test with no percentage threshold.",
+      "url": "https://docs.gaia-x.eu/policy-rules-committee/compliance-document/24.11/criteria_cloud_services/"
+    },
+    {
+      "id": "c5", "name": "BSI C5 (Germany)", "kind": "national attestation", "status": "in force",
+      "legal_status": "C5:2020 operative until 1 June 2027; C5:2026 published.",
+      "measures": [],
+      "ignores": ["data", "operational", "jurisdictional", "technological", "supply_chain", "economic"],
+      "deciding_clause": "Control GC-01 requires the provider to STATE its jurisdiction and the country where the ultimate parent is registered. Nothing requires those to be in the EU.",
+      "detail": "C5 imposes no sovereignty requirement at all. It is disclosure plus security controls, and is routinely misread as a sovereignty credential.",
+      "url": "https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/CloudComputing/Anforderungskatalog/2026/C5_2026_en.pdf"
+    },
+    {
+      "id": "chips2-domestic", "name": "Chips Act 2.0 \"domestic undertaking\"", "kind": "proposed EU law", "status": "proposal only",
+      "legal_status": "COM(2026) 504 final, procedure 2026/0139(COD), first-reading start. NOT LAW.",
+      "measures": ["technological"],
+      "ignores": ["data", "operational", "jurisdictional", "supply_chain", "economic"],
+      "deciding_clause": "Article 2(31) defines 'domestic undertaking' to include firms \"owned and controlled by an undertaking established in a signatory of the WTO Agreement on Government Procurement\". Article 2(32) sets ownership at 50% or more.",
+      "detail": "The GPA carve-out admits US, Japanese, Korean and Taiwanese-owned firms as domestic. On procurement preference the teeth are blunt by design: Article 30(1) says authorities \"may\" require a security-of-supply declaration, 30(2)(c) asks for dual sourcing \"where feasible and appropriate\", and 30(4)(d) requires any such requirement to be \"ancillary and non-decisive in the award of the contract\". There is no local-content quota.",
+      "url": "https://data.consilium.europa.eu/doc/document/ST-10094-2026-INIT/en/pdf"
+    }
+  ],
+
+  "CASES": [
+    {
+      "id": "meluxina-ai",
+      "name": "MeluXina-AI",
+      "country": "LU",
+      "year": 2026,
+      "status": "contracted",
+      "headline": "EUR 80m of EU and Luxembourg money buys 1,008 Nvidia GPUs, and the tender was a single undivided lot -- so the silicon share cannot be worked out even in principle.",
+      "chain": [
+        { "role": "funder", "entity": "EuroHPC Joint Undertaking", "jurisdiction": "EU", "amount": 40000000, "currency": "EUR", "share": "50%", "disclosed": true, "status": "contracted", "date": "2026-07-22", "note": "Digital Europe Programme", "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en" },
+        { "role": "funder", "entity": "Luxembourg State", "jurisdiction": "LU", "amount": 40000000, "currency": "EUR", "share": "50%", "disclosed": true, "status": "contracted", "date": "2026-07-22", "note": "Total Luxembourg commitment is EUR 60m once the EUR 32m five-year hosting and operations envelope is included", "src": "LuxProvide", "url": "https://www.luxprovide.lu/meluxina-ai/" },
+        { "role": "instrument", "entity": "Public procurement EUROHPC/2026/OP/0001", "jurisdiction": "EU", "amount": null, "disclosed": false, "note": "TED notice 104595-2026, published 2026-02-13, estimated value EUR 80,000,000 excl. VAT, duration 72 months. \"This contract is divided into lots: no\" -- there is no lot structure from which a hardware-versus-integration split could be inferred.", "src": "TED", "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en" },
+        { "role": "recipient", "entity": "LuxProvide S.A.", "jurisdiction": "LU", "ownership": "100% subsidiary of LuxConnect S.A., itself 99.92% Luxembourg State", "amount": null, "disclosed": false, "src": "LuxProvide", "url": "https://www.luxprovide.lu/meluxina-ai/" },
+        { "role": "supplier", "entity": "E4 Computer Engineering S.p.A.", "jurisdiction": "IT", "role_note": "prime contractor", "amount": null, "disclosed": false, "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en" },
+        { "role": "supplier", "entity": "Dell Technologies", "jurisdiction": "US", "role_note": "subcontractor", "amount": null, "disclosed": false, "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en" },
+        { "role": "supplier", "entity": "Nvidia", "jurisdiction": "US", "role_note": "252 nodes, 1,008 GB200 NVL4 GPUs, Quantum-2 InfiniBand", "amount": null, "disclosed": false, "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en" }
+      ],
+      "profit_lands": ["US", "IT"],
+      "not_public": [
+        "The Nvidia silicon value versus European integration value. The tender was a single undivided lot, so it cannot be inferred.",
+        "Dell's subcontract value and its EU contracting entity.",
+        "E4's margin."
+      ],
+      "tests": { "chips2-domestic": "n/a", "cada4": "n/a", "seal4": "n/a" },
+      "confidence": "high"
+    },
+
+    {
+      "id": "esmc-dresden",
+      "name": "ESMC Dresden (TSMC)",
+      "country": "DE",
+      "year": 2024,
+      "status": "contracted",
+      "headline": "EUR 5bn of German federal money, authorised by the Commission, into a fab 70% owned by a Taiwanese company. This is national money the EU approved, not EU spending -- the most commonly mis-stated figure in the file.",
+      "chain": [
+        { "role": "funder", "entity": "German Federal Government (BMWK)", "jurisdiction": "DE", "amount": 5000000000, "currency": "EUR", "disclosed": true, "status": "contracted", "date": "2024-08-20", "note": "MEMBER-STATE money. The Commission authorised it under Art. 107(3)(c) TFEU; the EU budget contributes nothing. Funding contract signed 2024-12-13; payment is milestone-linked and no disbursement has ever been publicly confirmed.", "src": "European Commission (SA.107553)", "url": "https://ec.europa.eu/commission/presscorner/detail/en/IP_24_4287" },
+        { "role": "instrument", "entity": "State aid case SA.107553", "jurisdiction": "EU", "amount": null, "disclosed": false, "note": "Commission AUTHORISATION of national aid. IPCEI Communication 2021/C 528/02 point 10(c)(i) makes nationality-of-beneficiary conditions unlawful, and Chips Act Article 15(1) states that any undertaking may apply -- so aid to a non-EU-owned recipient is lawful by design.", "src": "European Commission", "url": "https://ec.europa.eu/commission/presscorner/detail/en/IP_24_4287" },
+        { "role": "recipient", "entity": "ESMC GmbH, Dresden", "jurisdiction": "DE", "ownership": "TSMC 70%, Bosch 10%, Infineon 10%, NXP 10%", "amount": null, "disclosed": false, "note": "Equity: TSMC EUR 3.5bn, each minority partner EUR 500m. Total project investment stated to exceed EUR 10bn. Status as of mid-2026: structural build, tool-in expected 2027, ramp tied to customer demand.", "src": "TSMC", "url": "https://pr.tsmc.com/english/news/3169" },
+        { "role": "supplier", "entity": "Construction and semiconductor capital equipment vendors", "jurisdiction": "MIXED", "amount": null, "disclosed": false, "note": "Not disclosed." },
+        { "role": "supplier", "entity": "Taiwan Semiconductor Manufacturing Company Ltd", "jurisdiction": "TW", "role_note": "majority owner and technology licensor", "amount": null, "disclosed": false, "src": "TSMC", "url": "https://pr.tsmc.com/english/news/3169" }
+      ],
+      "profit_lands": ["TW", "DE"],
+      "not_public": [
+        "How much of the EUR 5bn has actually been disbursed. There is no public confirmation of any payment.",
+        "The disbursement schedule, milestones and clawback conditions.",
+        "Transfer pricing, TSMC licence and operating fees charged to ESMC GmbH -- and therefore where the economic profit actually books.",
+        "Wafer allocation terms for the three minority partners.",
+        "Saxony state co-funding, if any."
+      ],
+      "tests": {
+        "chips2-domestic": "pass",
+        "secnumcloud": "n/a", "cada4": "n/a"
+      },
+      "test_notes": { "chips2-domestic": "TSMC is established in Taiwan, a signatory of the WTO Agreement on Government Procurement, so under Article 2(31) a TSMC-controlled entity reads as a 'domestic undertaking'." },
+      "confidence": "high"
+    },
+
+    {
+      "id": "volt-rotterdam",
+      "name": "VOLT (Dutch AI Cloud and Rotterdam gigafactory)",
+      "country": "NL",
+      "year": 2026,
+      "status": "pledged",
+      "headline": "The obvious suspicion does not survive contact with the file: no Dutch and no EU public money reaches VOLT, because the cabinet declined the compute offtake the EU route requires. Confirmed private capital is 'more than ten million euro' against announcements of EUR 5bn to 22.5bn.",
+      "chain": [
+        { "role": "funder", "entity": "De Groot Family Office", "jurisdiction": "NL", "amount": 10000000, "currency": "EUR", "disclosed": true, "status": "committed", "date": "2026-07-09", "note": "Reported as \"meer dan tien miljoen euro\" for phase one -- a floor, not a total. An investment bank is separately SEEKING EUR 200m for Rotterdam phase one; that is not raised.", "src": "Computable", "url": "https://thetechcapital.com/volt-taps-dell-and-northc-datacenters-for-dutch-ai-cloud-launch/" },
+        { "role": "funder", "entity": "Dutch State", "jurisdiction": "NL", "amount": 0, "currency": "EUR", "disclosed": true, "status": "declined", "date": "2026-03-31", "note": "Kamerbrief 2026Z06597 / 2026D14922, State Secretary Aerdts: \"Het kabinet constateert dat binnen de huidige begroting geen ruimte bestaat voor het aangaan van de vereiste financiele verplichtingen ten behoeve van de aanbesteding van grootschalige rekencapaciteit bij een AI-gigafabriek.\" EuroHPC Regulation Art. 12b(4) requires an explicit Member State financing commitment BEFORE the call launches, so the EU route closed for any Dutch bidder. The letter names neither VOLT nor Rotterdam; it is a general policy decision. Dutch public AI-compute money went instead to the Groningen AI factory: EUR 71m cabinet, EUR 200m total.", "src": "Rijksoverheid", "url": "https://www.rijksoverheid.nl/documenten/kamerstukken/2026/03/31/positie-van-het-kabinet-ten-aanzien-van-deelname-aan-het-europese-ai-gigafabriekeninitiatief" },
+        { "role": "funder", "entity": "EuroHPC / InvestAI", "jurisdiction": "EU", "amount": 0, "currency": "EUR", "disclosed": true, "status": "not applicable", "note": "No award is possible: the AI Gigafactories call had not opened as of 2026-07-25.", "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/ai-gigafactories/ai-gigafactories-calls_en" },
+        { "role": "recipient", "entity": "VOLT Datacenters B.V.", "jurisdiction": "NL", "ownership": "Founder Han de Groot, co-founder of Switch Datacenters; disclosed backer is his own family office", "amount": null, "disclosed": false, "note": "KvK 98224255, entity registered 2025-09-05. Operating base is 14MW leased at Switch AMS4; first commercial offer is 64 B300 GPUs. Rotterdam gigafactory announced 2026-04-17 at up to 800MW phased, construction earliest 2027. Dutch AI Cloud announced 2026-07-09, go-live stated October 2026 -- not live.", "src": "DCD", "url": "https://www.datacenterdynamics.com/en/news/volt-announces-ai-gigafactory-in-rotterdam-netherlands/" },
+        { "role": "supplier", "entity": "Dell Technologies", "jurisdiction": "US", "amount": null, "disclosed": false, "src": "Techzine", "url": "https://www.techzine.eu/news/infrastructure/142787/volt-launches-dutch-ai-cloud-with-dell-and-northc/" },
+        { "role": "supplier", "entity": "Nvidia", "jurisdiction": "US", "role_note": "approximately 1,000 B300-equivalents at launch", "amount": null, "disclosed": false, "src": "DCD", "url": "https://www.datacenterdynamics.com/en/news/volt-teams-up-with-northc-to-launch-dutch-ai-cloud/" },
+        { "role": "supplier", "entity": "NorthC Datacenters", "jurisdiction": "FR", "role_note": "colocation host", "amount": null, "disclosed": false, "note": "Antin Infrastructure Partners S.A. (Paris) completed its acquisition of NorthC on 2026-03-19, so colocation profit lands in France, not Germany as older sources state.", "src": "Antin", "url": "https://www.datacenterdynamics.com/en/news/volt-teams-up-with-northc-to-launch-dutch-ai-cloud/" }
+      ],
+      "profit_lands": ["US", "FR", "NL"],
+      "not_public": [
+        "VOLT filed accounts.",
+        "Whether the EUR 200m Rotterdam raise progresses.",
+        "GPU counts and MW figures for the Amsterdam AI Factory.",
+        "The EUR 5bn / 7.2bn / 22.5bn figures in circulation are VOLT projections, not commitments."
+      ],
+      "tests": { "cada4": "unassessed", "chips2-domestic": "n/a" },
+      "test_notes": { "cada4": "VOLT is Dutch-owned, so the Annex II 4.1(g) third-country control criterion would not be the blocker. And because Annex II excludes hardware from scope, an entirely Dell and Nvidia estate would not be a blocker either. Whether it would qualify turns on criteria that are not publicly assessable." },
+      "confidence": "high"
+    },
+
+    {
+      "id": "jupiter",
+      "name": "JUPITER (Forschungszentrum Julich)",
+      "country": "DE",
+      "year": 2023,
+      "status": "contracted",
+      "headline": "A EUR 500m EU and German exascale programme whose largest hardware line, roughly 24,000 Nvidia superchips, has never had its price disclosed -- and whose European CPU content was cut from more than 1,300 nodes to 162 during delivery.",
+      "chain": [
+        { "role": "funder", "entity": "EuroHPC Joint Undertaking", "jurisdiction": "EU", "amount": 250000000, "currency": "EUR", "share": "50%", "disclosed": true, "status": "committed", "date": "2022-12-14", "note": "Of a EUR 500m maximum programme covering acquisition AND operations.", "src": "European Commission", "url": "https://digital-strategy.ec.europa.eu/en/news/hosting-agreement-signed-europes-first-exascale-supercomputer" },
+        { "role": "funder", "entity": "BMBF (German federal)", "jurisdiction": "DE", "amount": 125000000, "currency": "EUR", "share": "25%", "disclosed": true, "status": "committed", "date": "2022-12-14", "src": "Forschungszentrum Julich", "url": "https://www.fz-juelich.de/en/jupiter" },
+        { "role": "funder", "entity": "MKW Nordrhein-Westfalen (Land)", "jurisdiction": "DE", "amount": 125000000, "currency": "EUR", "share": "25%", "disclosed": true, "status": "committed", "date": "2022-12-14", "src": "Forschungszentrum Julich", "url": "https://www.fz-juelich.de/en/jupiter" },
+        { "role": "instrument", "entity": "EuroHPC co-funded procurement", "jurisdiction": "EU", "amount": 273000000, "currency": "EUR", "disclosed": true, "status": "contracted", "date": "2023-10-03", "note": "Acquisition, delivery, installation and maintenance. ParTec's own ad-hoc disclosure of 2023-08-23 states \"Der Gesamtauftrag liegt bei rund 300 Millionen Euro\" -- this does not reconcile with EuroHPC's EUR 273m and no reconciliation is public.", "caveat": "unreconciled-figures", "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/procurement-contract-jupiter-first-european-exascale-supercomputer-signed-2023-10-03_en" },
+        { "role": "recipient", "entity": "Forschungszentrum Julich", "jurisdiction": "DE", "ownership": "German public research organisation", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Eviden / Bull", "jurisdiction": "FR", "role_note": "integrator; sold to the French State on 2026-03-31 mid-contract, for up to EUR 404m including EUR 104m earn-outs", "amount": null, "disclosed": false, "src": "Atos", "url": "https://www.atosgroup.com/en/press/atos-group-completes-sale-bull-its-advanced-computing-activities-french-state" },
+        { "role": "supplier", "entity": "ParTec AG", "jurisdiction": "DE", "role_note": "consortium partner", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Nvidia", "jurisdiction": "US", "role_note": "Booster partition, approximately 24,000 GH200 Grace Hopper superchips, 5,884 nodes x 4", "amount": null, "disclosed": false, "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/jupiter-officially-propels-europe-exascale-era-2025-11-17_en" },
+        { "role": "supplier", "entity": "AMD", "jurisdiction": "US", "role_note": "582 dual-socket Turin 9655 nodes, installed in place of European CPU content", "amount": null, "disclosed": false, "src": "Forschungszentrum Julich", "url": "https://www.fz-juelich.de/en/jsc/jupiter/tech" },
+        { "role": "supplier", "entity": "SiPearl", "jurisdiction": "FR", "role_note": "162 Rhea1 nodes, cut down from more than 1,300; silicon powered on 2026-05-13 and still in bring-up", "amount": null, "disclosed": false, "src": "Forschungszentrum Julich", "url": "https://www.fz-juelich.de/en/jsc/jupiter/tech" }
+      ],
+      "profit_lands": ["US", "FR", "DE"],
+      "not_public": [
+        "Nvidia's line item, in any form.",
+        "ParTec's versus Eviden's share of the contract.",
+        "The EUR 273m versus EUR 300m discrepancy.",
+        "Any disbursed figure from any of the three funders.",
+        "The contract amendment covering the Rhea1 reduction and the AMD substitution.",
+        "SiPearl's Rhea1 node contract value."
+      ],
+      "tests": { "chips2-domestic": "n/a", "cada4": "n/a" },
+      "confidence": "high"
+    },
+
+    {
+      "id": "marenostrum5-ai",
+      "name": "MareNostrum 5 AI upgrade (Barcelona)",
+      "country": "ES",
+      "year": 2026,
+      "status": "contracted",
+      "headline": "The best-documented split in the whole dataset -- four funders published to the cent -- and it still buys Nvidia, Supermicro and IBM. Disclosure changes what you can see, not where the money goes.",
+      "chain": [
+        { "role": "funder", "entity": "EuroHPC JU / Digital Europe Programme", "jurisdiction": "EU", "amount": 64396140, "currency": "EUR", "disclosed": true, "status": "contracted", "date": "2026-01-26", "src": "EuroHPC JU tender", "url": "https://www.bsc.es/" },
+        { "role": "funder", "entity": "Spain, SEDIA", "jurisdiction": "ES", "amount": 26600000, "currency": "EUR", "disclosed": true, "status": "contracted", "date": "2026-01-26", "src": "EuroHPC JU tender", "url": "https://www.bsc.es/" },
+        { "role": "funder", "entity": "Spain, MICIU", "jurisdiction": "ES", "amount": 23487356.12, "currency": "EUR", "disclosed": true, "status": "contracted", "date": "2026-01-26", "src": "EuroHPC JU tender", "url": "https://www.bsc.es/" },
+        { "role": "funder", "entity": "Hosting bodies (Catalonia, Portugal, Turkiye)", "jurisdiction": "EU", "amount": 14308783.88, "currency": "EUR", "disclosed": true, "status": "contracted", "date": "2026-01-26", "note": "Catalonia's EUR 14m share was awarded as a direct grant on 2026-07-21, profiled 2026-2029.", "src": "EuroHPC JU tender", "url": "https://www.bsc.es/" },
+        { "role": "instrument", "entity": "EuroHPC co-funded procurement", "jurisdiction": "EU", "amount": 128792280, "currency": "EUR", "disclosed": true, "status": "contracted", "date": "2026-01-26", "note": "The original MareNostrum 5 acquisition contract was EUR 151,400,000 to BULL SAS under ref EUROHPC/LUX/2021/OP/0001 in 2022, 50% EuroHPC and 50% hosting consortium, with the national sub-split never disclosed. Total including operation EUR 202m." },
+        { "role": "recipient", "entity": "Barcelona Supercomputing Center (BSC-CNS)", "jurisdiction": "ES", "ownership": "Spanish public research centre", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Fsas Technologies (Fujitsu)", "jurisdiction": "JP", "role_note": "consortium lead on the AI upgrade, with Telefonica", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Nvidia", "jurisdiction": "US", "role_note": "GPUs; original ACC partition was 1,120 nodes x 4 H100", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Supermicro", "jurisdiction": "US", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "IBM", "jurisdiction": "US", "role_note": "storage", "amount": null, "disclosed": false }
+      ],
+      "profit_lands": ["US", "JP", "ES"],
+      "not_public": [
+        "The hosting-consortium sub-splits on the ORIGINAL machine.",
+        "Bull's margin.",
+        "All sub-contract values to Nvidia, Intel, Lenovo and IBM.",
+        "Disbursement to date.",
+        "Whether the EUR 202m and the ~EUR 198m BSC AI Factory envelopes overlap. Note also an unreconciled attribution: govern.cat attributes EUR 98m to Horizon Europe while EuroHPC attributes the upgrade's EU half to the Digital Europe Programme."
+      ],
+      "tests": { "chips2-domestic": "n/a", "cada4": "n/a" },
+      "confidence": "high"
+    },
+
+    {
+      "id": "ai-gigafactories",
+      "name": "AI Gigafactories / InvestAI",
+      "country": "EU",
+      "year": 2026,
+      "status": "pledged",
+      "headline": "EUR 20bn announced, EUR 1bn actually programmed, and the call still had not opened on 25 July 2026. Its own documentation encourages European hardware rather than requiring it, and plans in the same breath for US export restrictions.",
+      "chain": [
+        { "role": "funder", "entity": "InvestAI (announced envelope)", "jurisdiction": "EU", "amount": 20000000000, "currency": "EUR", "disclosed": true, "status": "pledged", "date": "2025-02-11", "note": "Of a EUR 200bn InvestAI headline. No instrument-by-instrument split of the EUR 20bn has ever been published.", "src": "European Commission", "url": "https://ec.europa.eu/commission/presscorner/api/files/document/print/en/ip_25_467/IP_25_467_EN.pdf" },
+        { "role": "funder", "entity": "EU budget actually programmed", "jurisdiction": "EU", "amount": 1000000000, "currency": "EUR", "disclosed": true, "status": "committed", "date": "2026-05", "note": "Digital Europe Programme plus Horizon Europe plus CEF-Digital. Lot 1 EUR 100m x4 plus Lot 2 EUR 200m x3 = EUR 1bn exactly. Phase 2 top-ups are conditional on the next MFF and are NOT appropriated.", "src": "EuroHPC 2026 Work Programme amendment" },
+        { "role": "instrument", "entity": "EuroHPC grant, capped at 17% of CAPEX", "jurisdiction": "EU", "amount": null, "disclosed": false, "note": "Regulation (EU) 2026/150 Art. 12b(5): Union contribution up to 17% of CAPEX, with participating states matching at least that. Art. 12b(3) restricts CONSORTIUM CONTROL to EU entities -- it says nothing about chip origin. THE CALL HAS NOT OPENED: the EuroHPC calls page returned \"Calls for proposals (0)\" when checked on 2026-07-25. Only a preparatory info session was held, on 2026-06-16.", "src": "EuroHPC JU", "url": "https://www.eurohpc-ju.europa.eu/ai-gigafactories/ai-gigafactories-calls_en" },
+        { "role": "recipient", "entity": "Not yet selected", "jurisdiction": "EU", "amount": null, "disclosed": false, "note": "An informal expression of interest closed 2025-06-20. The Commission states 77 proposals across 16 Member States and 60 sites; a figure of 76 also circulates from the EoI. No site selected, no consortium named, no vendor chosen.", "caveat": "proposal-count-discrepancy", "src": "European Commission", "url": "https://commission.europa.eu/topics/competitiveness/competitiveness-coordination-tool-projects/ai-gigafactories_en" },
+        { "role": "supplier", "entity": "Expected to be Nvidia, AMD or Intel", "jurisdiction": "US", "amount": null, "disclosed": false, "note": "The 2026-06-16 info session states gigafactories are \"encouraged to give due consideration to European hardware solutions... where these are competitive\", and separately that \"In case where processing units are acquired from the USA, the Contractors will need to implement all measures... to guarantee compliance with any restrictions imposed by the USA.\" Commissioner Virkkunen, December 2025: \"Our plans involve procuring chips from external sources.\" There is no European-preference condition.", "src": "EuroHPC JU info session" }
+      ],
+      "profit_lands": ["US"],
+      "not_public": [
+        "Any instrument-by-instrument split of the EUR 20bn.",
+        "Any InvestEU or EIB euro figure.",
+        "How the EUR 20bn headline reconciles with the EUR 1bn programmed.",
+        "The call text and deadline.",
+        "The identities of the expression-of-interest respondents."
+      ],
+      "tests": { "chips2-domestic": "n/a" },
+      "confidence": "high"
+    },
+
+    {
+      "id": "aws-esc",
+      "name": "AWS European Sovereign Cloud",
+      "country": "DE",
+      "year": 2024,
+      "status": "pledged",
+      "headline": "A 16-year private pledge, not public money and not disbursed money, running on leased colocation at launch -- with the German federal government confirming on the record that no federal subsidy went into it.",
+      "chain": [
+        { "role": "funder", "entity": "Amazon.com, Inc.", "jurisdiction": "US", "amount": 7800000000, "currency": "EUR", "disclosed": true, "status": "pledged", "date": "2024-05-14", "note": "\"AWS now plans to invest EUR 7.8 billion in the AWS European Sovereign Cloud by 2040.\" Announced May 2024, not 2025. Germany-specific, not Europe-wide. Never itemised; no spend-to-date has ever been published.", "src": "AWS", "url": "https://aws.amazon.com/blogs/security/aws-plans-to-invest-e7-8b-into-the-aws-european-sovereign-cloud-set-to-launch-by-the-end-of-2025/" },
+        { "role": "funder", "entity": "German public funds", "jurisdiction": "DE", "amount": 0, "currency": "EUR", "disclosed": true, "status": "none", "date": "2026-01-23", "note": "Bundestag Drucksache 21/3928: \"Fuer die Rechenzentren der sogenannten 'AWS European Sovereign Cloud' des Unternehmens Amazon wurden keine Foerdermittel des Bundes gewaehrt... Der Bundesregierung liegen auch keine Informationen ueber die Gewaehrung von Foerdermitteln durch die EU oder die Laender vor.\" Note this is weaker than a Land-level denial.", "src": "Deutscher Bundestag", "url": "https://dserver.bundestag.de/btd/21/039/2103928.pdf" },
+        { "role": "instrument", "entity": "Own corporate capex", "jurisdiction": "US", "amount": null, "disclosed": false },
+        { "role": "recipient", "entity": "AWS European Sovereign Cloud GmbH, Potsdam", "jurisdiction": "DE", "ownership": "Amazon.com, Inc. (US parent), operated through an EU-resident, EU-controlled legal structure", "amount": null, "disclosed": false, "note": "GA 2026-01-15, region eusc-de-east-1. Runs on LEASED COLOCATION at launch; own datacentres at Baruth/Mark and Finsterwalde are built later. Belgium, Netherlands and Portugal are announced sovereign Local Zones, not regions, with no live date.", "src": "AWS", "url": "https://press.aboutamazon.com/aws/2026/1/aws-launches-aws-european-sovereign-cloud-and-announces-expansion-across-europe" },
+        { "role": "supplier", "entity": "German construction, colocation landlords and staff", "jurisdiction": "DE", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Amazon's own IP and hardware", "jurisdiction": "US", "amount": null, "disclosed": false }
+      ],
+      "profit_lands": ["US"],
+      "not_public": [
+        "How much of the EUR 7.8bn has been spent. Never broken out in segment reporting.",
+        "The split between German construction and wages versus Amazon capex on its own IP.",
+        "The methodology behind the EUR 17.2bn GDP claim, which is an unaudited vendor projection. The associated 2,800 FTE are supply-chain jobs in third-party businesses, not Amazon headcount.",
+        "Contract values for public-sector customers."
+      ],
+      "tests": {
+        "cada4": "fail",
+        "cada3": "conditional",
+        "seal4": "fail",
+        "secnumcloud": "fail",
+        "gaiax3": "fail",
+        "c5": "pass"
+      },
+      "test_notes": {
+        "cada4": "Annex II 4.1(g) bars a provider \"subject to the control of a third country\", and point 4.1(g) carries NO derogation clause.",
+        "cada3": "Point 3.1(g) permits audit at level 3 where the Commission has adopted an implementing act. No such act exists yet, so this is conditional, not passing.",
+        "seal4": "SEAL-4 requires \"no critical non-EU dependencies\". AWS did not bid in the April 2026 Commission tender, which went to four European providers.",
+        "c5": "C5 imposes no sovereignty requirement. GC-01 requires only that the provider STATE where its ultimate parent is registered."
+      },
+      "confidence": "high"
+    },
+
+    {
+      "id": "mistral-essonne",
+      "name": "Mistral Compute Essonne, and Campus AI",
+      "country": "FR",
+      "year": 2026,
+      "status": "contracted",
+      "headline": "Seven banks including the French state bank lent about USD 830m against Nvidia GPUs. The far larger campus behind it is reportedly 70% Emirati sovereign-wealth money.",
+      "chain": [
+        { "role": "funder", "entity": "Bpifrance", "jurisdiction": "FR", "amount": null, "disclosed": false, "status": "contracted", "date": "2026-03-30", "note": "French state bank, one of seven lenders. Individual tickets not disclosed.", "src": "Reuters", "url": "https://www.reuters.com/business/finance/frances-mistral-raises-830-million-debt-ai-data-centre-build-up-2026-03-30/" },
+        { "role": "funder", "entity": "BNP Paribas, Credit Agricole CIB, HSBC Continental Europe, La Banque Postale, MUFG Bank, Natixis", "jurisdiction": "MIXED", "amount": null, "disclosed": false, "status": "contracted", "date": "2026-03-30", "src": "Reuters", "url": "https://www.reuters.com/business/finance/frances-mistral-raises-830-million-debt-ai-data-centre-build-up-2026-03-30/" },
+        { "role": "instrument", "entity": "Limited-recourse project financing", "jurisdiction": "FR", "amount": 830000000, "currency": "USD", "disclosed": true, "status": "contracted", "date": "2026-03-30", "note": "Two tranches, approximately USD 720m plus EUR 94m.", "src": "Linklaters", "url": "https://www.linklaters.com/en/about-us/news-and-deals/deals/2026/march/linklaters-advises-seven-leading-global-banks" },
+        { "role": "recipient", "entity": "Mistral AI SAS", "jurisdiction": "FR", "amount": null, "disclosed": false, "note": "Site at Bruyeres-le-Chatel, operated by Eclairion. 44 MW, live Q2 2026." },
+        { "role": "supplier", "entity": "Nvidia", "jurisdiction": "US", "role_note": "13,800 GB300 GPUs", "amount": null, "disclosed": false, "note": "No unit price and no Nvidia contract value is public. Do not derive one." }
+      ],
+      "profit_lands": ["US", "FR"],
+      "related": {
+        "name": "Campus AI, Fouju (Seine-et-Marne)",
+        "note": "1.4GW campus, reportedly MGX 70% / Bpifrance 25% / Nvidia 4% / Mistral 1% -- registry-derived and NOT officially confirmed by the parties. MGX is Abu Dhabi state-created, chaired by Sheikh Tahnoun bin Zayed. Status is permitted-and-contracting, NOT under construction. Capital figures conflict across three sources: EUR 35bn in the CNDP saisine, approximately EUR 50bn in the owners' February 2026 document, and EUR 7.5bn cited by President Macron. Contracts signed: GE Vernova 420kV GIS (January 2026), Eiffage substation above EUR 120m (June 2026).",
+        "caveat": "registry-derived-shareholdings"
+      },
+      "not_public": [
+        "The Nvidia share of the USD 830m.",
+        "Per-bank tickets and the security package.",
+        "Whether an SPV exists.",
+        "Bpifrance's Mistral equity amount.",
+        "Official confirmation of the Campus AI shareholding percentages, and which of the three capital figures is authoritative."
+      ],
+      "tests": { "cada4": "unassessed" },
+      "confidence": "medium"
+    },
+
+    {
+      "id": "nscale-sines",
+      "name": "Nscale and Sines, Portugal",
+      "country": "PT",
+      "year": 2026,
+      "status": "contracted",
+      "headline": "No Portuguese and no EU public money at Sines, documented three times over. This is US-financed, US-vendored, US-tenanted capacity sited in Europe, with a Norwegian equity anchor and Norwegian state debt.",
+      "chain": [
+        { "role": "funder", "entity": "12-bank syndicate", "jurisdiction": "MIXED", "amount": 900000000, "currency": "USD", "disclosed": true, "status": "committed", "date": "2026-07-07", "note": "Revolving credit facility. J.P. Morgan, Goldman Sachs, Morgan Stanley, MUFG, RBC, BofA, Credit Agricole CIB, Deutsche Bank, Mizuho, SMBC, TD, KeyBank -- only two are EU banks. Pricing, tenor, collateral and amount drawn are not disclosed, so \"committed\" is the only defensible status.", "src": "UKTN", "url": "https://www.uktech.news/ai/london-hyperscaler-nscale-secures-670m-credit-facility-20260707" },
+        { "role": "funder", "entity": "Eksfin (Norwegian state export finance)", "jurisdiction": "NO", "amount": 241700000, "currency": "USD", "disclosed": true, "status": "committed", "date": "2026-04-21", "note": "Of a USD 790m Narvik project facility -- Norway, not Portugal. The minister's defence: \"Eksfin gir ikke stotte\", finance on the same terms as private banks.", "src": "Eksfin" },
+        { "role": "funder", "entity": "Portuguese State and EU funds", "jurisdiction": "PT", "amount": 0, "currency": "EUR", "disclosed": true, "status": "none", "note": "Confirmed three ways. TPF environmental assessment (October 2024): shareholders invested approximately EUR 240m \"sem utilizacao de quaisquer subsidios, nem fundos publicos, nem qualquer tipo de beneficios fiscais ou financiamento europeu\". Start Campus via Portugal Global (April 2025): \"de forma totalmente privada, sem capital publico\". Secretary of State for Internationalisation (2021): no fiscal or financial incentives granted. PIN status is a permitting fast-track, not money. Do not conflate with the separate, unawarded EUR 200m approved by the Council of Ministers on 2026-06-26 for compute time in an Iberian EuroHPC gigafactory bid, in which Nscale is not a named member." },
+        { "role": "recipient", "entity": "Nscale Global Holdings Ltd", "jurisdiction": "GB", "ownership": "Aker ASA 22.76% fully diluted / 25.8% of share capital at 2026-03-31; Nvidia, Dell, Blue Owl, Fidelity and Point72 stakes reported but percentages not disclosed", "amount": null, "disclosed": false, "note": "Incorporated in England and Wales, no. 15749408, on 2024-05-29. Spun out of Arkon Energy, an Australian crypto miner -- NOT out of an Aker business; Aker arrived at Series B in September 2025. Convertible and PIK notes list on The International Stock Exchange with a Jersey listing agent." },
+        { "role": "supplier", "entity": "Nvidia", "jurisdiction": "US", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Dell Technologies", "jurisdiction": "US", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Start Campus", "jurisdiction": "LU", "role_note": "site landlord, Luxembourg S.a r.l. / Irish LP", "amount": null, "disclosed": false }
+      ],
+      "profit_lands": ["US", "GB", "NO", "LU"],
+      "not_public": [
+        "RCF terms and the amount drawn.",
+        "All Microsoft contract values. Microsoft is a tenant, not a shareholder: approximately 200,000 Nvidia GB300 across four sites including 12,600 at Sines, announced 2025-10-15, with the value never confirmed by Nscale. Press estimates of USD 14bn to 23bn are not company figures.",
+        "Every non-Aker shareholding percentage.",
+        "The Davidson Kempner / Pioneer Point split in Start Campus, and the Vattenfall PPA."
+      ],
+      "tests": { "cada4": "unassessed", "chips2-domestic": "n/a" },
+      "confidence": "high"
+    },
+
+    {
+      "id": "chips-act-aggregate",
+      "name": "Chips Act aid to non-EU-parented projects",
+      "country": "EU",
+      "year": 2026,
+      "status": "contracted",
+      "headline": "About half of all Chips Act-authorised aid went to projects whose ultimate parent sits outside the EU -- lawfully, by design, because asking who owns the recipient is prohibited. And not one euro of approved aid was ever cancelled: the famous cancellations were never approved in the first place.",
+      "aggregate": {
+        "non_eu_parented_total": 7614400000,
+        "currency": "EUR",
+        "commission_cumulative_total": 14860000000,
+        "share": "approximately 51%",
+        "as_of": "2026-07-14",
+        "cancelled_from_approved_aid": 0,
+        "note": "Every euro is MEMBER-STATE money that the Commission authorised, not EU spending."
+      },
+      "line_items": [
+        { "project": "ESMC Dresden", "amount": 5000000000, "date": "2024-08-20", "case": "SA.107553", "member_state": "DE", "parent": "TSMC", "parent_jurisdiction": "TW", "status": "approved" },
+        { "project": "Silicon Box Novara", "amount": 1300000000, "date": "2024-12-18", "case": "SA.113264", "member_state": "IT", "parent": "Silicon Box", "parent_jurisdiction": "SG", "status": "approved" },
+        { "project": "GlobalFoundries Dresden", "amount": 495000000, "date": "2025-12-11", "case": "SA.118843", "member_state": "DE", "parent": "GlobalFoundries Inc (Mubadala-majority)", "parent_jurisdiction": "US", "status": "approved" },
+        { "project": "onsemi Roznov", "amount": 450000000, "date": "2025-11-21", "case": null, "member_state": "CZ", "parent": "ON Semiconductor Corp", "parent_jurisdiction": "US", "status": "approved but not granted -- the Czech government had still not adopted the incentive as of 2026-07-12" },
+        { "project": "Vishay Itzehoe", "amount": 214000000, "date": "2026-07-14", "case": "SA.120818", "member_state": "DE", "parent": "Vishay Intertechnology", "parent_jurisdiction": "US", "status": "approved" },
+        { "project": "Diamond Foundry Trujillo", "amount": 81000000, "date": "2024-12-16", "case": null, "member_state": "ES", "parent": "Diamond Foundry Inc", "parent_jurisdiction": "US", "status": "approved" },
+        { "project": "KLA Weilburg", "amount": 74400000, "date": "2026-07-14", "case": "SA.121240", "member_state": "DE", "parent": "KLA Corp", "parent_jurisdiction": "US", "status": "approved" }
+      ],
+      "excluded": [
+        { "project": "ST / GlobalFoundries Crolles", "amount": 2900000000, "case": "SA.102430", "date": "2023-04-28", "reason": "The ST versus GF split is not published, so GlobalFoundries' non-EU share cannot be counted. Project stalled since mid-2025." }
+      ],
+      "never_approved": [
+        { "project": "Intel Magdeburg", "pledged": 9900000000, "currency": "EUR", "note": "Germany pledged from the KTF in 2023, but the Commission NEVER adopted a decision and nothing was ever disbursed. There was no approval to withdraw and nothing to repay. After the BVerfG voided the 2021 supplementary budget, roughly EUR 2bn was recycled into a new Chips Act call -- the pot now funding GlobalFoundries, X-FAB, Vishay and KLA. Saxony-Anhalt repurchased the land, notarised 2026-05-21, price not disclosed." },
+        { "project": "Intel Poland (Miekinia)", "pledged": 7400000000, "currency": "PLN", "note": "Pre-notification green light only, cancelled 2025-07-24, nothing paid." },
+        { "project": "Wolfspeed Ensdorf", "pledged": 515000000, "currency": "EUR", "note": "Pledged via IPCEI, no standalone decision, definitively cancelled 2025-10-22, nothing disbursed." }
+      ],
+      "chain": [
+        { "role": "funder", "entity": "Member state treasuries", "jurisdiction": "MIXED", "amount": 7614400000, "currency": "EUR", "disclosed": true, "status": "contracted", "note": "NOT EU money." },
+        { "role": "instrument", "entity": "National grant under Art. 107(3)(c) TFEU, Commission-authorised", "jurisdiction": "EU", "amount": null, "disclosed": false, "note": "IPCEI Communication 2021/C 528/02 point 10(c)(i) EXCLUDES aid conditioned on the beneficiary having its headquarters in the Member State, calling it a non-severable violation of Union law. Chips Act Article 15(1): \"Any undertaking or any consortium of undertakings may submit an application.\"", "src": "EUR-Lex", "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52021XC1230(02)" },
+        { "role": "recipient", "entity": "EU-established subsidiaries of non-EU parents", "jurisdiction": "MIXED", "amount": null, "disclosed": false },
+        { "role": "supplier", "entity": "Parent groups in TW, US, SG", "jurisdiction": "MIXED", "amount": null, "disclosed": false }
+      ],
+      "profit_lands": ["TW", "US", "SG"],
+      "not_public": [
+        "The Crolles ST/GF split.",
+        "Total project investment for Vishay, KLA and GlobalFoundries Dresden.",
+        "Disbursement status for most cases.",
+        "The Magdeburg land repurchase price."
+      ],
+      "tests": { "chips2-domestic": "pass" },
+      "test_notes": { "chips2-domestic": "Article 2(31) admits WTO GPA signatories as domestic undertakings, so US, Taiwanese, Singaporean, Japanese and Korean-owned firms qualify." },
+      "confidence": "high"
+    }
+  ],
+
+  "CONTRADICTIONS": [
+    { "id": "hardware-carveout", "case": "EU-owned provider, all-Nvidia estate, TSMC silicon", "sovereign_under": ["cada4"], "not_sovereign_under": ["seal4"], "why": "CADA Annex II excludes hardware from scope entirely. SEAL weights supply chain at 20% and SEAL-4 requires no critical non-EU dependencies.", "is_headline": true },
+    { "id": "hyperscaler-subsidiary", "case": "US hyperscaler EU subsidiary, EU regions, EU staff", "sovereign_under": ["cada3", "c5"], "not_sovereign_under": ["cada4", "secnumcloud", "gaiax3"], "why": "Level 3 carries a derogation for third-country-controlled providers by Commission implementing act. Level 4 does not. C5 imposes no sovereignty requirement at all." },
+    { "id": "gpa-domestic", "case": "TSMC-owned fab in Dresden receiving EUR 5bn", "sovereign_under": ["chips2-domestic"], "not_sovereign_under": ["cada4", "secnumcloud"], "why": "Chips Act 2.0 Article 2(31) admits WTO GPA signatories as domestic undertakings. State aid law goes further: IPCEI rules make a nationality condition unlawful." },
+    { "id": "dividends-out", "case": "EU-controlled provider, 23% US minority equity, dividends flowing out", "sovereign_under": ["cada4", "secnumcloud"], "not_sovereign_under": [], "why": "CADA 4.1(g) is a CONTROL test, not an equity test, and CADA contains no provision on profits, revenue or economic benefit anywhere in its operative articles. No instrument measures this at all.", "is_headline": true },
+    { "id": "parent-route", "case": "Non-EU parent compelled under 18 U.S.C. 2713 to produce EU-held data", "sovereign_under": [], "not_sovereign_under": ["cada4", "secnumcloud", "gaiax3"], "why": "Data Act Article 32 binds only the EU provider as addressee, and EDPB Guidelines 02/2024 paragraph 8 places the parent-route request outside GDPR Article 48 entirely. No EU instrument resolves the conflict. Demonstrated in practice in June 2026 when a US export-control directive took two frontier models offline worldwide and cut off every EU user for eighteen days." }
+  ]
+}
