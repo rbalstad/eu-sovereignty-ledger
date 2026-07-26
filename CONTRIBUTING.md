@@ -38,7 +38,7 @@ The two look similar in a spreadsheet and mean opposite things. `amount: null` w
   "disclosed": true, "status": "declined", "date": "2026-03-31", "src": "Rijksoverheid" }
 ```
 
-Four nodes currently carry a confirmed zero: the Dutch State and EuroHPC against VOLT, German public funds against the AWS European Sovereign Cloud, and Portuguese and EU funds against Sines. Each is sourced. They render in red as `EUR 0` with a "confirmed zero" marker, never as a blank or a dash, because "we checked and the answer is none" is a finding and "we do not know" is not.
+Seven nodes currently carry a confirmed zero: the Dutch State and EuroHPC against VOLT, German public funds against the AWS European Sovereign Cloud, Portuguese and EU funds against Nscale at Sines, and EU money, Portuguese state money and the PIN fast-track against Start Campus as landlord. Each is sourced. They render in red as `EUR 0` with a "confirmed zero" marker, never as a blank or a dash, because "we checked and the answer is none" is a finding and "we do not know" is not.
 
 Sometimes a split is not merely unpublished but **unknowable by construction** -- MeluXina-AI was tendered as a single undivided lot, so no hardware-versus-integration split exists to be disclosed. Record that as a fact in `not_public`, and still leave the amount `null`.
 

@@ -11,13 +11,13 @@ It is a snapshot (**July 2026**), built from primary sources, with editorial jud
 
 ## The two things it shows
 
-**Follow the euro.** Ten named cases, each traced across five stations: funder, instrument, recipient, supplier, and the jurisdiction where the profit finally books. The flag changes at the last two stations in almost every case. That change is the product.
+**Follow the euro.** Twelve named cases, each traced across five stations: funder, instrument, recipient, supplier, and the jurisdiction where the profit finally books. The flag changes at the last two stations in almost every case. That change is the product.
 
 **Which definition?** Eight tests that each claim to define sovereignty, held against five archetypes. They disagree with each other, and the disagreements are not accidents. Send an all-Nvidia estate from SEAL-4 to CADA level 4 and watch it go from failing to passing, because [CADA Annex II](https://data.consilium.europa.eu/doc/document/ST-10104-2026-ADD-1/en/pdf) puts hardware outside the scope in its own second sentence.
 
 ## "Not disclosed" is a finding, not a missing value
 
-Forty-two places in this dataset record an amount as `null` with `disclosed: false`. They render as dashed grey pipes, and they are the most important thing here.
+Fifty-five places in this dataset record an amount as `null` with `disclosed: false`. They render as dashed grey pipes, and they are the most important thing here.
 
 A dashed pipe does not mean zero, and it does not mean nobody has filled in the spreadsheet. It means the public record stops at that point. JUPITER, MeluXina-AI and Mistral Compute all have fully documented funding chains that go dark at exactly the same station: the line item that would show what Nvidia was paid. Three separately-sourced chains, the same gap, the same place.
 
@@ -33,7 +33,11 @@ A dashed pipe does not mean zero, and it does not mean nobody has filled in the 
 
 ## The cases
 
-MeluXina-AI · ESMC Dresden · VOLT Rotterdam · JUPITER · MareNostrum 5 AI upgrade · AI Gigafactories and InvestAI · AWS European Sovereign Cloud · Mistral Compute Essonne and Campus AI · Nscale and Sines · Chips Act aid to non-EU-parented projects, in aggregate.
+MeluXina-AI · ESMC Dresden · VOLT Rotterdam · JUPITER · MareNostrum 5 AI upgrade · AI Gigafactories and InvestAI · AWS European Sovereign Cloud · Mistral Compute Essonne and Campus AI · Nscale and Sines · Chips Act aid to non-EU-parented projects, in aggregate · Polo Strategico Nazionale · Start Campus at Sines.
+
+Sines appears twice on purpose, because two different money chains run through the same site: Nscale's financing as the tenant, and Start Campus's as the landlord. Keeping them apart is what stops the "no public money" finding being counted twice.
+
+Polo Strategico Nazionale is the case that shows the whole pattern in one balance sheet. EU recovery money reaches Italy's national public-administration cloud as customer revenue rather than as a grant; 97.4 percent of the concessionaire's service costs in 2025 were paid to the four shareholders that own it; and the platforms underneath are Oracle, Microsoft, Google and AWS, with no published figure for any of them.
 
 VOLT is in here precisely because it refutes the obvious hypothesis. No Dutch and no EU public money reaches it: the cabinet declined the compute offtake that EuroHPC rules require before a bid can be made. Confirmed private capital is "more than ten million euro" against announcements of EUR 5bn to 22.5bn. A ledger that only confirms its author's suspicions is not worth publishing.
 
