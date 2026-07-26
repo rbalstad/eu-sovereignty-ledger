@@ -74,6 +74,8 @@ LICENSE-DATA.txt    CC BY 4.0 (the data)
 
 The code (`index.html`) is [MIT](LICENSE). The data (`data/flows.json`) is [CC BY 4.0](LICENSE-DATA.txt) -- reuse it freely, with attribution. Each claim carries its own source link; those sources belong to their publishers.
 
+**Fonts are self-hosted.** Caveat and Patrick Hand are [SIL Open Font License](fonts/OFL-Caveat.txt); the licence texts sit alongside them in `fonts/`. They are served from this repository rather than from a font CDN, so the page makes no third-party request of any kind. On an asset about technology sovereignty that seemed worth getting right.
+
 ## Maintainer
 
 Built and maintained by Reidar Balstad, RB Consult AB. LinkedIn: https://www.linkedin.com/in/rbalstad/ Sources are public Commission, Council, EuroHPC and national government documents, company filings and announcements, and credible trade press as of July 2026. No individual is named anywhere in the data: entities and instruments only.
