@@ -2,11 +2,11 @@
 
 An opinionated, sourced trace of who actually receives European public money for AI and compute infrastructure -- and which definition of "sovereign" that money is being measured against.
 
-Companion to [Europe's sovereign full stack](https://rbalstad.github.io/eu-sovereign-stack-map/), which maps *where* Europe is sovereign. This one follows the money.
+Companion to [Europe's sovereign full stack](https://map.sovereigntymonitor.eu/), which maps *where* Europe is sovereign. This one follows the money.
 
 It is a snapshot (**July 2026**), built from primary sources, with editorial judgement in every test verdict. The point of publishing it is to make those judgements correctable: if a figure or a verdict is wrong, [open a PR with a source](CONTRIBUTING.md).
 
-**Live:** `https://rbalstad.github.io/eu-sovereignty-ledger/` (live once GitHub Pages is enabled)
+**Live:** `https://ledger.sovereigntymonitor.eu/` (live once GitHub Pages is enabled)
 **Straight to the punchline:** add `#gap` to the URL.
 
 ## The two things it shows
