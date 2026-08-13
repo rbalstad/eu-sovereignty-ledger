@@ -93,7 +93,12 @@ a{color:var(--blue)}
 .hero::before{left:40px;transform:rotate(-7deg)}
 .hero::after{right:54px;transform:rotate(6deg)}
 h1{margin:0 0 4px;font-size:clamp(2rem,4.2vw,3.7rem);line-height:.94;letter-spacing:-.01em}
-.kicker{margin:0 0 8px;font-family:"Caveat",cursive;font-size:1.15rem;color:var(--violet)}
+/* .kicker collides with system.css, which styles a small uppercase eyebrow label under the same
+   name. This rule set family, size and colour but not letter-spacing or text-transform, so those
+   two came through and rendered this hero line in Caveat, in capitals, at .18em tracking. Both
+   are reset here. The proper fix is to rename this class, since the two mean different things,
+   but that touches markup and belongs with the restyle. */
+.kicker{margin:0 0 8px;font-family:"Caveat",cursive;font-size:1.15rem;color:var(--violet);letter-spacing:normal;text-transform:none}
 .subtitle{max-width:1000px;font-size:1.05rem;color:var(--muted);line-height:1.5;margin:0}
 .crosslink{margin:10px 0 0;font-size:.92rem;color:var(--muted)}
 
@@ -275,6 +280,28 @@ footer a{color:var(--blue)}
      footer note inherits this repo's hand-drawn body face while the nav beside it, which
      does carry its own font shorthand, sits in Barlow. */
   font-family: var(--body);
+}
+
+/* ---- European Sovereignty Monitor chrome: the same tokens again, for dark ----
+   The block above pins light values so the chrome does not inherit this repo's own ground.
+   Being unconditional, it also pinned the chrome light when the page went dark, so the header
+   and footer sat light on a dark page. This repo drives dark two ways, an explicit .pin-dark
+   and an OS default for anyone who has not pinned light, so both need the counterpart or the
+   bug survives for one half of the readers. Values are system.css's dark block verbatim.
+   Both blocks go when :root does, during the restyle. */
+:root.pin-dark .site-head, :root.pin-dark .site-foot {
+  --paper: #14171a;  --ink: #f2f2f3;    --ink-head: #f2f2f3; --ink-body: #dcdcdf;
+  --muted: #98989b;  --faint: #b7b7ba;  --quiet: #7a7a7d;
+  --hair: #33363a;   --hair-soft: #26292c;
+  --steel: #5980a6;  --steel-deep: #94bce3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(.pin-light) .site-head, :root:not(.pin-light) .site-foot {
+    --paper: #14171a;  --ink: #f2f2f3;    --ink-head: #f2f2f3; --ink-body: #dcdcdf;
+    --muted: #98989b;  --faint: #b7b7ba;  --quiet: #7a7a7d;
+    --hair: #33363a;   --hair-soft: #26292c;
+    --steel: #5980a6;  --steel-deep: #94bce3;
+  }
 }
 
 /* ---- European Sovereignty Monitor chrome: undo the hand-drawn button treatment ----
