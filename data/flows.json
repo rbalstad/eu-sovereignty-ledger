@@ -98,7 +98,7 @@
         "gaiax3",
         "c5"
       ],
-      "note": "SEAL category SOV-5, weighted 20%, is the only place in any EU instrument where hardware provenance carries weight -- and SEAL is procurement documentation, not law. CADA Annex II excludes hardware expressly."
+      "note": "SEAL category SOV-5, weighted 20%, is the only place in any EU instrument where hardware provenance carries weight, and SEAL is procurement documentation, not law. CADA Annex II excludes hardware expressly."
     },
     {
       "id": "economic",
@@ -284,7 +284,7 @@
       "country": "LU",
       "year": 2026,
       "status": "contracted",
-      "headline": "EUR 80m of EU and Luxembourg money buys 1,008 Nvidia GPUs, and the tender was a single undivided lot -- so the silicon share cannot be worked out even in principle.",
+      "headline": "EUR 80m of EU and Luxembourg money buys 1,008 Nvidia GPUs, and the tender was a single undivided lot, so the silicon share cannot be worked out even in principle.",
       "chain": [
         {
           "role": "funder",
@@ -320,7 +320,7 @@
           "jurisdiction": "EU",
           "amount": null,
           "disclosed": false,
-          "note": "TED notice 104595-2026, published 2026-02-13, estimated value EUR 80,000,000 excl. VAT, duration 72 months. \"This contract is divided into lots: no\" -- there is no lot structure from which a hardware-versus-integration split could be inferred.",
+          "note": "TED notice 104595-2026, published 2026-02-13, estimated value EUR 80,000,000 excl. VAT, duration 72 months. \"This contract is divided into lots: no\". There is no lot structure from which a hardware-versus-integration split could be inferred.",
           "src": "TED",
           "url": "https://www.eurohpc-ju.europa.eu/eurohpc-ju-signs-contract-meluxina-ai-new-ai-optimised-supercomputer-luxembourg-ai-factory-2026-07-22_en"
         },
@@ -387,7 +387,7 @@
       "country": "DE",
       "year": 2024,
       "status": "contracted",
-      "headline": "EUR 5bn of German federal money, authorised by the Commission, into a fab 70% owned by a Taiwanese company. This is national money the EU approved, not EU spending -- the most commonly mis-stated figure in the file.",
+      "headline": "EUR 5bn of German federal money, authorised by the Commission, into a fab 70% owned by a Taiwanese company. This is national money the EU approved, not EU spending: the most commonly mis-stated figure in the file.",
       "chain": [
         {
           "role": "funder",
@@ -408,7 +408,7 @@
           "jurisdiction": "EU",
           "amount": null,
           "disclosed": false,
-          "note": "Commission AUTHORISATION of national aid. IPCEI Communication 2021/C 528/02 point 10(c)(i) makes nationality-of-beneficiary conditions unlawful, and Chips Act Article 15(1) states that any undertaking may apply -- so aid to a non-EU-owned recipient is lawful by design.",
+          "note": "Commission AUTHORISATION of national aid. IPCEI Communication 2021/C 528/02 point 10(c)(i) makes nationality-of-beneficiary conditions unlawful, and Chips Act Article 15(1) states that any undertaking may apply, so aid to a non-EU-owned recipient is lawful by design.",
           "src": "European Commission",
           "url": "https://ec.europa.eu/commission/presscorner/detail/en/IP_24_4287"
         },
@@ -449,7 +449,7 @@
       "not_public": [
         "How much of the EUR 5bn has actually been disbursed. There is no public confirmation of any payment.",
         "The disbursement schedule, milestones and clawback conditions.",
-        "Transfer pricing, TSMC licence and operating fees charged to ESMC GmbH -- and therefore where the economic profit actually books.",
+        "Transfer pricing, TSMC licence and operating fees charged to ESMC GmbH, and therefore where the economic profit actually books.",
         "Wafer allocation terms for the three minority partners.",
         "Saxony state co-funding, if any."
       ],
@@ -480,7 +480,7 @@
           "disclosed": true,
           "status": "committed",
           "date": "2026-07-09",
-          "note": "Reported as \"meer dan tien miljoen euro\" for phase one -- a floor, not a total. An investment bank is separately SEEKING EUR 200m for Rotterdam phase one; that is not raised.",
+          "note": "Reported as \"meer dan tien miljoen euro\" for phase one: a floor, not a total. An investment bank is separately SEEKING EUR 200m for Rotterdam phase one; that is not raised.",
           "src": "Computable",
           "url": "https://thetechcapital.com/volt-taps-dell-and-northc-datacenters-for-dutch-ai-cloud-launch/"
         },
@@ -516,7 +516,7 @@
           "ownership": "Founder-led; the founder also co-founded Switch Datacenters, and the disclosed backer is the founder's own family office",
           "amount": null,
           "disclosed": false,
-          "note": "KvK 98224255, entity registered 2025-09-05. Operating base is 14MW leased at Switch AMS4; first commercial offer is 64 B300 GPUs. Rotterdam gigafactory announced 2026-04-17 at up to 800MW phased, construction earliest 2027. Dutch AI Cloud announced 2026-07-09, go-live stated October 2026 -- not live.",
+          "note": "KvK 98224255, entity registered 2025-09-05. Operating base is 14MW leased at Switch AMS4; first commercial offer is 64 B300 GPUs. Rotterdam gigafactory announced 2026-04-17 at up to 800MW phased, construction earliest 2027. Dutch AI Cloud announced 2026-07-09, go-live stated October 2026, not live.",
           "src": "DCD",
           "url": "https://www.datacenterdynamics.com/en/news/volt-announces-ai-gigafactory-in-rotterdam-netherlands/"
         },
@@ -577,7 +577,7 @@
       "country": "DE",
       "year": 2023,
       "status": "contracted",
-      "headline": "A EUR 500m EU and German exascale programme whose largest hardware line, roughly 24,000 Nvidia superchips, has never had its price disclosed -- and whose European CPU content was cut from more than 1,300 nodes to 162 during delivery.",
+      "headline": "A EUR 500m EU and German exascale programme whose largest hardware line, roughly 24,000 Nvidia superchips, has never had its price disclosed, and whose European CPU content was cut from more than 1,300 nodes to 162 during delivery.",
       "chain": [
         {
           "role": "funder",
@@ -628,7 +628,7 @@
           "disclosed": true,
           "status": "contracted",
           "date": "2023-10-03",
-          "note": "Acquisition, delivery, installation and maintenance. ParTec's own ad-hoc disclosure of 2023-08-23 states \"Der Gesamtauftrag liegt bei rund 300 Millionen Euro\" -- this does not reconcile with EuroHPC's EUR 273m and no reconciliation is public.",
+          "note": "Acquisition, delivery, installation and maintenance. ParTec's own ad-hoc disclosure of 2023-08-23 states \"Der Gesamtauftrag liegt bei rund 300 Millionen Euro\". This does not reconcile with EuroHPC's EUR 273m and no reconciliation is public.",
           "caveat": "unreconciled-figures",
           "src": "EuroHPC JU",
           "url": "https://www.eurohpc-ju.europa.eu/procurement-contract-jupiter-first-european-exascale-supercomputer-signed-2023-10-03_en"
@@ -715,7 +715,7 @@
       "country": "ES",
       "year": 2026,
       "status": "contracted",
-      "headline": "The best-documented split in the whole dataset -- four funders published to the cent -- and it still buys Nvidia, Supermicro and IBM. Disclosure changes what you can see, not where the money goes.",
+      "headline": "The best-documented split in the whole dataset (four funders published to the cent), and it still buys Nvidia, Supermicro and IBM. Disclosure changes what you can see, not where the money goes.",
       "chain": [
         {
           "role": "funder",
@@ -874,7 +874,7 @@
           "jurisdiction": "EU",
           "amount": null,
           "disclosed": false,
-          "note": "Regulation (EU) 2026/150 Art. 12b(5): Union contribution up to 17% of CAPEX, with participating states matching at least that. Art. 12b(3) restricts CONSORTIUM CONTROL to EU entities -- it says nothing about chip origin. THE CALL HAS NOT OPENED: the EuroHPC calls page returned \"Calls for proposals (0)\" when checked on 2026-07-25. Only a preparatory info session was held, on 2026-06-16.",
+          "note": "Regulation (EU) 2026/150 Art. 12b(5): Union contribution up to 17% of CAPEX, with participating states matching at least that. Art. 12b(3) restricts CONSORTIUM CONTROL to EU entities: it says nothing about chip origin. THE CALL HAS NOT OPENED: the EuroHPC calls page returned \"Calls for proposals (0)\" when checked on 2026-07-25. Only a preparatory info session was held, on 2026-06-16.",
           "src": "EuroHPC JU",
           "url": "https://www.eurohpc-ju.europa.eu/ai-gigafactories/ai-gigafactories-calls_en"
         },
@@ -920,7 +920,7 @@
       "country": "DE",
       "year": 2024,
       "status": "pledged",
-      "headline": "A 16-year private pledge, not public money and not disbursed money, running on leased colocation at launch -- with the German federal government confirming on the record that no federal subsidy went into it.",
+      "headline": "A 16-year private pledge, not public money and not disbursed money, running on leased colocation at launch, with the German federal government confirming on the record that no federal subsidy went into it.",
       "chain": [
         {
           "role": "funder",
@@ -1107,7 +1107,7 @@
           "disclosed": true,
           "status": "committed",
           "date": "2026-07-07",
-          "note": "Revolving credit facility. J.P. Morgan, Goldman Sachs, Morgan Stanley, MUFG, RBC, BofA, Credit Agricole CIB, Deutsche Bank, Mizuho, SMBC, TD, KeyBank -- only two are EU banks. Pricing, tenor, collateral and amount drawn are not disclosed, so \"committed\" is the only defensible status.",
+          "note": "Revolving credit facility. J.P. Morgan, Goldman Sachs, Morgan Stanley, MUFG, RBC, BofA, Credit Agricole CIB, Deutsche Bank, Mizuho, SMBC, TD, KeyBank. Only two are EU banks. Pricing, tenor, collateral and amount drawn are not disclosed, so \"committed\" is the only defensible status.",
           "src": "UKTN",
           "url": "https://www.uktech.news/ai/london-hyperscaler-nscale-secures-670m-credit-facility-20260707"
         },
@@ -1120,7 +1120,7 @@
           "disclosed": true,
           "status": "committed",
           "date": "2026-04-21",
-          "note": "Of a USD 790m Narvik project facility -- Norway, not Portugal. The minister's defence: \"Eksfin gir ikke stotte\", finance on the same terms as private banks.",
+          "note": "Of a USD 790m Narvik project facility: Norway, not Portugal. The minister's defence: \"Eksfin gir ikke stotte\", finance on the same terms as private banks.",
           "src": "Eksfin"
         },
         {
@@ -1141,7 +1141,7 @@
           "ownership": "Aker ASA 22.76% fully diluted / 25.8% of share capital at 2026-03-31; Nvidia, Dell, Blue Owl, Fidelity and Point72 stakes reported but percentages not disclosed",
           "amount": null,
           "disclosed": false,
-          "note": "Incorporated in England and Wales, no. 15749408, on 2024-05-29. Spun out of Arkon Energy, an Australian crypto miner -- NOT out of an Aker business; Aker arrived at Series B in September 2025. Convertible and PIK notes list on The International Stock Exchange with a Jersey listing agent."
+          "note": "Incorporated in England and Wales, no. 15749408, on 2024-05-29. Spun out of Arkon Energy, an Australian crypto miner, NOT out of an Aker business; Aker arrived at Series B in September 2025. Convertible and PIK notes list on The International Stock Exchange with a Jersey listing agent."
         },
         {
           "role": "supplier",
@@ -1191,7 +1191,7 @@
       "country": "EU",
       "year": 2026,
       "status": "contracted",
-      "headline": "About half of all Chips Act-authorised aid went to projects whose ultimate parent sits outside the EU -- lawfully, by design, because asking who owns the recipient is prohibited. And not one euro of approved aid was ever cancelled: the famous cancellations were never approved in the first place.",
+      "headline": "About half of all Chips Act-authorised aid went to projects whose ultimate parent sits outside the EU: lawfully, by design, because asking who owns the recipient is prohibited. And not one euro of approved aid was ever cancelled: the famous cancellations were never approved in the first place.",
       "aggregate": {
         "non_eu_parented_total": 7614400000,
         "currency": "EUR",
@@ -1240,7 +1240,7 @@
           "member_state": "CZ",
           "parent": "ON Semiconductor Corp",
           "parent_jurisdiction": "US",
-          "status": "approved but not granted -- the Czech government had still not adopted the incentive as of 2026-07-12"
+          "status": "approved but not granted: the Czech government had still not adopted the incentive as of 2026-07-12"
         },
         {
           "project": "Vishay Itzehoe",
@@ -1287,7 +1287,7 @@
           "project": "Intel Magdeburg",
           "pledged": 9900000000,
           "currency": "EUR",
-          "note": "Germany pledged from the KTF in 2023, but the Commission NEVER adopted a decision and nothing was ever disbursed. There was no approval to withdraw and nothing to repay. After the BVerfG voided the 2021 supplementary budget, roughly EUR 2bn was recycled into a new Chips Act call -- the pot now funding GlobalFoundries, X-FAB, Vishay and KLA. Saxony-Anhalt repurchased the land, notarised 2026-05-21, price not disclosed."
+          "note": "Germany pledged from the KTF in 2023, but the Commission NEVER adopted a decision and nothing was ever disbursed. There was no approval to withdraw and nothing to repay. After the BVerfG voided the 2021 supplementary budget, roughly EUR 2bn was recycled into a new Chips Act call, the pot now funding GlobalFoundries, X-FAB, Vishay and KLA. Saxony-Anhalt repurchased the land, notarised 2026-05-21, price not disclosed."
         },
         {
           "project": "Intel Poland (Miekinia)",
